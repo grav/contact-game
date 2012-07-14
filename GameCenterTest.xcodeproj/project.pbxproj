@@ -20,6 +20,7 @@
 		AE7673B415AF048A0045843E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE76739515AF04890045843E /* Foundation.framework */; };
 		AE7673BC15AF048A0045843E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE7673BA15AF048A0045843E /* InfoPlist.strings */; };
 		AE7673BF15AF048A0045843E /* GameCenterTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7673BE15AF048A0045843E /* GameCenterTestTests.m */; };
+		AE7673C915AF04AC0045843E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7673C815AF04AC0045843E /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,21 +38,22 @@
 		AE76739315AF04890045843E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AE76739515AF04890045843E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE76739715AF04890045843E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		AE76739B15AF04890045843E /* GameCenterTest-Info.plist */ = {isa = PBXFileReference; path = "GameCenterTest-Info.plist"; sourceTree = "<group>"; };
+		AE76739B15AF04890045843E /* GameCenterTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameCenterTest-Info.plist"; sourceTree = "<group>"; };
 		AE76739D15AF04890045843E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AE76739F15AF04890045843E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AE7673A115AF04890045843E /* GameCenterTest-Prefix.pch */ = {isa = PBXFileReference; path = "GameCenterTest-Prefix.pch"; sourceTree = "<group>"; };
-		AE7673A215AF04890045843E /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		AE7673A115AF04890045843E /* GameCenterTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GameCenterTest-Prefix.pch"; sourceTree = "<group>"; };
+		AE7673A215AF04890045843E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AE7673A315AF04890045843E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AE7673A515AF04890045843E /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		AE7673A515AF04890045843E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AE7673A615AF04890045843E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AE7673A915AF04890045843E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		AE7673B015AF048A0045843E /* GameCenterTestTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCenterTestTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7673B115AF048A0045843E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		AE7673B915AF048A0045843E /* GameCenterTestTests-Info.plist */ = {isa = PBXFileReference; path = "GameCenterTestTests-Info.plist"; sourceTree = "<group>"; };
+		AE7673B915AF048A0045843E /* GameCenterTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GameCenterTestTests-Info.plist"; sourceTree = "<group>"; };
 		AE7673BB15AF048A0045843E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AE7673BD15AF048A0045843E /* GameCenterTestTests.h */ = {isa = PBXFileReference; path = GameCenterTestTests.h; sourceTree = "<group>"; };
+		AE7673BD15AF048A0045843E /* GameCenterTestTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameCenterTestTests.h; sourceTree = "<group>"; };
 		AE7673BE15AF048A0045843E /* GameCenterTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameCenterTestTests.m; sourceTree = "<group>"; };
+		AE7673C815AF04AC0045843E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				AE76739415AF04890045843E /* UIKit.framework in Frameworks */,
 				AE76739615AF04890045843E /* Foundation.framework in Frameworks */,
 				AE76739815AF04890045843E /* CoreGraphics.framework in Frameworks */,
+				AE7673C915AF04AC0045843E /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +103,7 @@
 		AE76739215AF04890045843E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE7673C815AF04AC0045843E /* GameKit.framework */,
 				AE76739315AF04890045843E /* UIKit.framework */,
 				AE76739515AF04890045843E /* Foundation.framework */,
 				AE76739715AF04890045843E /* CoreGraphics.framework */,

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+#import <GameKit/GameKit.h>
+
+@interface ViewController : UIViewController<GKSessionDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *displayNameTextField;
 
 @end
