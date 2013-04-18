@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		308A642CD56E0F558CB6F1F2 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6DB23408A8A40106A431 /* Card.m */; };
+		308A6BB7BF809AD64819A7FD /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */; };
+		308A6D2C98289E9A9BCC39D0 /* CardService.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A64D9205A7F1E37F21E25 /* CardService.m */; };
+		308A6D6397C86E0243B4B510 /* GameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* GameVC.m */; };
+		AE60B40515B61F4200CA6669 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE60B40415B61F4200CA6669 /* AVFoundation.framework */; };
+		AE75FA3915B1AE95000F2706 /* Peer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE75FA3815B1AE95000F2706 /* Peer.m */; };
 		AE76739415AF04890045843E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE76739315AF04890045843E /* UIKit.framework */; };
 		AE76739615AF04890045843E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE76739515AF04890045843E /* Foundation.framework */; };
 		AE76739815AF04890045843E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE76739715AF04890045843E /* CoreGraphics.framework */; };
@@ -34,6 +40,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		308A64D9205A7F1E37F21E25 /* CardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardService.m; sourceTree = "<group>"; };
+		308A66DE5C1C6C03516311A7 /* GameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameVC.h; sourceTree = "<group>"; };
+		308A6ACBA7B14B237C24DA20 /* CardService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardService.h; sourceTree = "<group>"; };
+		308A6B64E0B07E3677620398 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		308A6DB23408A8A40106A431 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
+		308A6E73B35803B96390E818 /* GameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameVC.m; sourceTree = "<group>"; };
+		308A6EC87F3CB9021333D104 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
+		AE60B40415B61F4200CA6669 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AE75FA3715B1AE95000F2706 /* Peer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peer.h; sourceTree = "<group>"; };
+		AE75FA3815B1AE95000F2706 /* Peer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peer.m; sourceTree = "<group>"; };
 		AE76738F15AF04890045843E /* GameCenterTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameCenterTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE76739315AF04890045843E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AE76739515AF04890045843E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,6 +82,7 @@
 				AE76739615AF04890045843E /* Foundation.framework in Frameworks */,
 				AE76739815AF04890045843E /* CoreGraphics.framework in Frameworks */,
 				AE7673C915AF04AC0045843E /* GameKit.framework in Frameworks */,
+				AE60B40515B61F4200CA6669 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +102,8 @@
 		AE76738415AF04890045843E = {
 			isa = PBXGroup;
 			children = (
+				AE75FA3715B1AE95000F2706 /* Peer.h */,
+				AE75FA3815B1AE95000F2706 /* Peer.m */,
 				AE76739915AF04890045843E /* GameCenterTest */,
 				AE7673B715AF048A0045843E /* GameCenterTestTests */,
 				AE76739215AF04890045843E /* Frameworks */,
@@ -103,6 +123,7 @@
 		AE76739215AF04890045843E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE60B40415B61F4200CA6669 /* AVFoundation.framework */,
 				AE7673C815AF04AC0045843E /* GameKit.framework */,
 				AE76739315AF04890045843E /* UIKit.framework */,
 				AE76739515AF04890045843E /* Foundation.framework */,
@@ -121,6 +142,14 @@
 				AE7673A615AF04890045843E /* ViewController.m */,
 				AE7673A815AF04890045843E /* ViewController.xib */,
 				AE76739A15AF04890045843E /* Supporting Files */,
+				308A64D9205A7F1E37F21E25 /* CardService.m */,
+				308A6ACBA7B14B237C24DA20 /* CardService.h */,
+				308A6DB23408A8A40106A431 /* Card.m */,
+				308A6B64E0B07E3677620398 /* Card.h */,
+				308A6EC87F3CB9021333D104 /* NSArray+Functional.h */,
+				308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */,
+				308A6E73B35803B96390E818 /* GameVC.m */,
+				308A66DE5C1C6C03516311A7 /* GameVC.h */,
 			);
 			path = GameCenterTest;
 			sourceTree = "<group>";
@@ -265,6 +294,11 @@
 				AE7673A015AF04890045843E /* main.m in Sources */,
 				AE7673A415AF04890045843E /* AppDelegate.m in Sources */,
 				AE7673A715AF04890045843E /* ViewController.m in Sources */,
+				AE75FA3915B1AE95000F2706 /* Peer.m in Sources */,
+				308A6D2C98289E9A9BCC39D0 /* CardService.m in Sources */,
+				308A642CD56E0F558CB6F1F2 /* Card.m in Sources */,
+				308A6BB7BF809AD64819A7FD /* NSArray+Functional.m in Sources */,
+				308A6D6397C86E0243B4B510 /* GameVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +354,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikkel Gravgaard Nielsen (V8KBXLQLZT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -335,6 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "9B9C1A5E-4B4A-4643-B0DA-E02D39C8F60A";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -345,6 +381,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikkel Gravgaard Nielsen (V8KBXLQLZT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -354,6 +391,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "9B9C1A5E-4B4A-4643-B0DA-E02D39C8F60A";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -434,6 +472,7 @@
 				AE7673C415AF048A0045843E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE7673C515AF048A0045843E /* Build configuration list for PBXNativeTarget "GameCenterTestTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +481,7 @@
 				AE7673C715AF048A0045843E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -10,7 +10,7 @@
 
 #import <GameKit/GameKit.h>
 
-@interface ViewController : UIViewController<GKSessionDelegate>
+@interface ViewController : UIViewController<GKSessionDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *displayNameTextField;
 
 @end
