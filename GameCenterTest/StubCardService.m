@@ -45,7 +45,7 @@
                          headline:@"foobar"
                          imageUrl:url
                       connections:connections
-                     endorsements:endorsements];
+                monthOfEmployment:endorsements];
     }];
     srand((unsigned int) time(NULL)); //'make sure' we don't continue to pick the same cards on both clients
     return cards;
