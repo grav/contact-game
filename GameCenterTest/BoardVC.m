@@ -14,7 +14,7 @@
 //#import "UIControl+RACSignalSupport.h"
 
 @implementation BoardVC {
-    id<CardServiceProtocol> _cardService;
+    id<CardService> _cardService;
 }
 - (id)initWithGame:(Game*)game {
     self = [super init];

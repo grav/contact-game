@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 
-@protocol CardServiceProtocol <NSObject>
+@protocol CardService <NSObject>
 - (void)newCardWithCompletion:(void (^)(Card *))completion;
 @end

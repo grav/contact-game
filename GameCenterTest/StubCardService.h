@@ -12,6 +12,6 @@
 
 typedef void (^CardBlock)(Card*);
 
-@interface StubCardService : NSObject <CardServiceProtocol>
+@interface StubCardService : NSObject <CardService>
 
 @end
