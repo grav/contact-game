@@ -8,6 +8,10 @@
 
 #import "Card.h"
 
+#define kContactName @"ContactName"
+#define kProperties @"Properties"
+#define kSelectedProperty @"SelectedProperty"
+
 @interface Card ()
 @end
 
@@ -27,6 +31,21 @@
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<Card>Name: %@\nProperties: %@",_contactName,_properties];
+}
+
+#pragma mark - NSCoding protocol
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:_properties forKey:kProperties];
+    [coder encodeObject:_contactName forKey:kContactName];
+    [coder encodeObject:_selectedProperty forKey:kSelectedProperty];
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    self.properties = [coder decodeObjectForKey:kProperties];
+    self.contactName = [coder decodeObjectForKey:kContactName];
+    self.selectedProperty = [coder decodeObjectForKey:kSelectedProperty];
+    return self;
 }
 
 

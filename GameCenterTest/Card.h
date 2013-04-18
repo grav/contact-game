@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Card : NSObject
+@interface Card : NSObject <NSCoding>
 @property (nonatomic, strong) NSDictionary *properties;
 @property (nonatomic, strong) NSString *selectedProperty;
 @property (nonatomic, strong) NSString *contactName;
