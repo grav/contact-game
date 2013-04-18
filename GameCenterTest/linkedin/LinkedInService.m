@@ -10,7 +10,6 @@
 #import "LinkedInAuthenticationViewController.h"
 #import "LinkedInCredentials.h"
 
-
 @implementation LinkedInService {
     LinkedInPerson *user;
     NSMutableArray *linkedInPersons;
