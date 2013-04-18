@@ -36,6 +36,11 @@
     l.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:l];
 
+    UIButton *b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    b.frame = CGRectMake(20, 430, 320-40, 60);
+    [b setTitle:@"Pick a card" forState:UIControlStateNormal];
+    [self.view addSubview:b];
+
     // 320 x 480
     CardView *selected = [[CardView alloc] initWithFrame:CGRectMake(15,50,150, 200)];
     [self.view addSubview:selected];
