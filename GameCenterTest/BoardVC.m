@@ -54,6 +54,10 @@
     [self.view addSubview:b];
 
     [[b rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        if(self.game.receivedCard && self.game.selectedCard){
+            self.game.receivedCard = nil;
+            self.game.selectedCard = nil;
+        }
         [_cardService newCardWithCompletion:^(Card *card) {
             card.selectedProperty = @"endorsements";
             [self.game didSelectCard:card];

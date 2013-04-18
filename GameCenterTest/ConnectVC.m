@@ -149,6 +149,11 @@ connectionWithPeerFailed:(NSString *)peerID
 
 - (void)receiveData:(NSData *)data fromPeer:(NSString *)peer inSession:(GKSession *)session context:(void *)context {
     NSCAssert(peer == self.connectedPeer.peerID, @"Peer id %@ and %@ differ", peer, self.connectedPeer.peerID);
+    if(self.game.receivedCard && self.game.selectedCard){
+        //apparently, opponent started a new game
+        self.game.receivedCard = nil;
+        self.game.selectedCard = nil;
+    }
     self.game.receivedCard = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
