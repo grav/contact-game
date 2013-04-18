@@ -10,6 +10,8 @@
 #import "CardService.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "CardView.h"
+#import "ReactiveCocoa/UIControl+RACSignalSupport.h"
+//#import "UIControl+RACSignalSupport.h"
 
 @implementation BoardVC {
 
@@ -37,9 +39,17 @@
     [self.view addSubview:l];
 
     UIButton *b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    b.frame = CGRectMake(20, 430, 320-40, 60);
+    b.frame = CGRectMake(20, 400, 320-40, 60);
     [b setTitle:@"Pick a card" forState:UIControlStateNormal];
     [self.view addSubview:b];
+
+    [[b rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [[CardService sharedInstance] newCardWithCompletion:^(Card *card) {
+            card.selectedProperty = @"endorsements";
+            [self.game didSelectCard:card];
+        }];
+    }];
+
 
     RAC(b, enabled) = [RACSignal combineLatest:@[RACAble(self.game.selectedCard),RACAble(self.game.receivedCard)]
     reduce:^(Card *own, Card *other){
@@ -65,14 +75,9 @@
         received.card = c;
     }];
 
-    [[CardService sharedInstance] newCardWithCompletion:^(Card *card) {
-        card.selectedProperty = @"endorsements";
-        [self.game didSelectCard:card];
-    }];
-
-    [[CardService sharedInstance] newCardWithCompletion:^(Card *card) {
-        [self.game didReceiveCard:card];
-    }];
+//    [[CardService sharedInstance] newCardWithCompletion:^(Card *card) {
+//        [self.game didReceiveCard:card];
+//    }];
 
 
 

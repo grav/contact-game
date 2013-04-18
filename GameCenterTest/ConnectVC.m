@@ -8,6 +8,7 @@
 
 #import "ConnectVC.h"
 #import "Peer.h"
+#import "BoardVC.h"
 #import <AVFoundation/AVPlayer.h>
 @interface ConnectVC ()
 @property (nonatomic,strong) GKSession *session;
@@ -86,7 +87,6 @@ static NSString *kCellId = @"PeerTableCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Peer *p = [self.peers objectForKey:[[self.peers allKeys] objectAtIndex:indexPath.row]];
     [self.session connectToPeer:p.peerID withTimeout:kConnectionTimeout];
-    tableView.allowsSelection = NO;
 }
 
 
@@ -130,10 +130,24 @@ connectionWithPeerFailed:(NSString *)peerID
             break;
         case GKPeerStateUnavailable:
             [self.peers removeObjectForKey:peerID];
+            break;
+        case GKPeerStateConnecting:
+            self.table.allowsSelection = NO;
+            break;
+        case GKPeerStateConnected:
+            [self showBoard];
+            break;
         default:
             break;
     }
     [self.table reloadData];
+}
+
+- (void) showBoard
+{
+    UIViewController *vc = [[BoardVC alloc] init];
+    [self presentModalViewController:vc animated:YES];
+
 }
 
 @end

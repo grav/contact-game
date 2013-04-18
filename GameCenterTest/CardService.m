@@ -53,10 +53,11 @@
 - (void)newCardWithCompletion:(CardBlock)completion {
     int numCards = _cards.count;
     Card *c = [_cards objectAtIndex:(NSUInteger) (rand() % numCards)];
-    int delay = rand() % 8 + 1;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
-       completion(c);
-    });
+    completion(c);
+//    int delay = rand() % 8 + 1;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+//       completion(c);
+//    });
 }
 
 
