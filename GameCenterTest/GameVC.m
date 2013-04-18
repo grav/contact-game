@@ -17,28 +17,30 @@
     NSString *selectedProperty = self.selectedCard.selectedProperty?self.selectedCard.selectedProperty:self.receivedCard.selectedProperty;
     Result result = [GameVC compareOwnCard:self.selectedCard withOtherCard:self.receivedCard consideringProperty:selectedProperty];
     self.score += [GameVC scoreFromResult:result];
+    self.receivedCard = nil;
+    self.selectedCard = nil;
 }
 
 - (void)didSelectCard:(Card *)card
 {
+    NSCAssert(!self.selectedCard,@"A card is already selected!");
     self.selectedCard = card;
     if(self.receivedCard){
         [self determineScore];
     }
+
+    // todo - send card to other player
 }
 
 
 - (void)didReceiveCard:(Card *)card {
+    NSCAssert(!self.receivedCard,@"A card has already been received!");
     if(self.selectedCard){
         [self determineScore];
     }
 }
 
-- (void)sendCard:(Card *)card {
-    if(self.receivedCard){
-        [self determineScore];
-    }
-}
+
 
 #pragma mark - Util
 + (Result)compareOwnCard:(Card*)own withOtherCard:(Card *)other consideringProperty:(NSString *)property {

@@ -13,14 +13,16 @@
 @implementation GameCenterTestTests
 {
     GameVC *_game;
+    Card *_a, *_b;
 }
 - (void)setUp
 {
     [super setUp];
 
+    _a = [Card cardWithName:@"Foo" connections:10 endorsements:10];
+    _b = [Card cardWithName:@"Bar" connections:10 endorsements:20];
     _game = [[GameVC alloc] init];
 
-    // Set-up code here.
 }
 
 - (void)tearDown
@@ -32,12 +34,29 @@
 
 - (void)testCard
 {
-    Card *a = [Card cardWithName:@"Foo" connections:10 endorsements:10];
-    Card *b = [Card cardWithName:@"Bar" connections:10 endorsements:20];
-    Result r = [GameVC compareOwnCard:a withOtherCard:b consideringProperty:@"connections"];
+    _b.selectedProperty = @"endorsements";
+    Result r = [GameVC compareOwnCard:_a withOtherCard:_b consideringProperty:@"connections"];
     STAssertEquals(r, ResultTie, @"Tie");
-    r = [GameVC compareOwnCard:a withOtherCard:b consideringProperty:@"endorsements"];
+    r = [GameVC compareOwnCard:_a withOtherCard:_b consideringProperty:@"endorsements"];
     STAssertEquals(r, ResultLoss, @"Loss");
+}
+
+- (void)testGame
+{
+    STAssertEquals(_game.score, 0, @"Initially 0 score");
+    _b.selectedProperty = @"endorsements";
+    [_game didSelectCard:_b];
+    STAssertEquals(_game.score, 0, @"No match yet");
+    [_game didReceiveCard:_a];
+    STAssertEquals(_game.score, 2, @"Win!");
+
+}
+
+- (void)testService
+{
+    [[CardService sharedInstance] newCardWithCompletion:^(Card *card) {
+//        NSLog(@"%@",card);
+    }];
 }
 
 @end

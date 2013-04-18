@@ -25,4 +25,9 @@
     return c;
 }
 
+- (NSString *)description{
+    return [NSString stringWithFormat:@"Name: %@\nProperties: %@",_contactName,_properties];
+}
+
+
 @end

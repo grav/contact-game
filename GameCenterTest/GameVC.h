@@ -28,8 +28,6 @@ typedef enum {
 
 - (void)didReceiveCard:(Card*)card;
 
-- (void)sendCard:(Card*)card;
-
 + (Result)compareOwnCard:(Card*)own withOtherCard:(Card *)other consideringProperty:(NSString *)property;
 
 @end
