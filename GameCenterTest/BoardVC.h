@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "Game.h"
-
+#import "ConnectVC.h"
 
 @interface BoardVC : UIViewController
 
-@property Game *game;
+@property (nonatomic, strong) Game *game;
+@property (nonatomic, weak) ConnectVC *connectVC;
+
+- (id)initWithGame:(Game*)game;
 
 @end
