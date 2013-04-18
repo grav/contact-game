@@ -45,6 +45,14 @@ static NSString *kCellId = @"PeerTableCell";
         NSLog(@"Error %@", errorMessage);
         displayStatusLabel.text = errorMessage;
     }];
+
+    [[LinkedInService singleton] getLinkedInPerson:^(LinkedInPerson *user) {
+        NSLog(@"Person %@", user);
+
+    }                                   andFailure:^(NSString *errorMessage) {
+        NSLog(@"Error %@", errorMessage);
+
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
