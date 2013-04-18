@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		308A642CD56E0F558CB6F1F2 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6DB23408A8A40106A431 /* Card.m */; };
 		308A64F415BAB3B1D2996DC2 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* Game.m */; };
+		308A65123DCF4EBF9ADDBA7D /* BoardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A68B342F59E71BB7E286A /* BoardVC.m */; };
 		308A6BB7BF809AD64819A7FD /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */; };
+		308A6BCC7D85C842D79BA09D /* BoardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A68B342F59E71BB7E286A /* BoardVC.m */; };
 		308A6D2C98289E9A9BCC39D0 /* CardService.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A64D9205A7F1E37F21E25 /* CardService.m */; };
 		308A6D6397C86E0243B4B510 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* Game.m */; };
+		AE1AB3671720181F00851433 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 308A65586E09FB7BAB116719 /* libReactiveCocoa-iOS.a */; };
+		AE1AB37817201A6A00851433 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1AB37717201A6A00851433 /* Default-568h@2x.png */; };
 		AE60B40515B61F4200CA6669 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE60B40415B61F4200CA6669 /* AVFoundation.framework */; };
 		AE75FA3915B1AE95000F2706 /* Peer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE75FA3815B1AE95000F2706 /* Peer.m */; };
 		AE76739415AF04890045843E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE76739315AF04890045843E /* UIKit.framework */; };
@@ -31,6 +35,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		308A61F52E8539A794BF4D0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 308A6483A2D2595A350B63A8;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
+		308A6202F7873A7F7C06AF67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 308A68B4B12A855DA7EA3794;
+			remoteInfo = ReactiveCocoa;
+		};
+		308A6456A937D5BDCC80C9B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 308A67C0F03D846BDFAF456B;
+			remoteInfo = ReactiveCocoaTests;
+		};
+		AE1AB368172018CE00851433 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88F440AA153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
 		AE7673B515AF048A0045843E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AE76738615AF04890045843E /* Project object */;
@@ -41,14 +73,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = External/ReativeCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
 		308A64D9205A7F1E37F21E25 /* CardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardService.m; sourceTree = "<group>"; };
 		308A66DE5C1C6C03516311A7 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		308A68B342F59E71BB7E286A /* BoardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardVC.m; sourceTree = "<group>"; };
+		308A6AA364B2C1CCBC068AF7 /* BoardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardVC.h; sourceTree = "<group>"; };
 		308A6ACBA7B14B237C24DA20 /* CardService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardService.h; sourceTree = "<group>"; };
 		308A6B64E0B07E3677620398 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		308A6DB23408A8A40106A431 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
 		308A6E73B35803B96390E818 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		308A6EC87F3CB9021333D104 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
+		AE1AB37717201A6A00851433 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AE60B40415B61F4200CA6669 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AE75FA3715B1AE95000F2706 /* Peer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peer.h; sourceTree = "<group>"; };
 		AE75FA3815B1AE95000F2706 /* Peer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peer.m; sourceTree = "<group>"; };
@@ -79,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE1AB3671720181F00851433 /* libReactiveCocoa-iOS.a in Frameworks */,
 				AE76739415AF04890045843E /* UIKit.framework in Frameworks */,
 				AE76739615AF04890045843E /* Foundation.framework in Frameworks */,
 				AE76739815AF04890045843E /* CoreGraphics.framework in Frameworks */,
@@ -100,15 +137,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		308A630E958AF5FC3B68FC60 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				308A61D9ABAAF19EE75B6739 /* ReactiveCocoa.framework */,
+				308A65586E09FB7BAB116719 /* libReactiveCocoa-iOS.a */,
+				308A6C340F9C0F00CADE91ED /* ReactiveCocoaTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		308A6EB7859CC5390C8B5F17 /* External */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
 		AE76738415AF04890045843E = {
 			isa = PBXGroup;
 			children = (
+				AE1AB37717201A6A00851433 /* Default-568h@2x.png */,
 				AE75FA3715B1AE95000F2706 /* Peer.h */,
 				AE75FA3815B1AE95000F2706 /* Peer.m */,
 				AE76739915AF04890045843E /* GameCenterTest */,
 				AE7673B715AF048A0045843E /* GameCenterTestTests */,
 				AE76739215AF04890045843E /* Frameworks */,
 				AE76739015AF04890045843E /* Products */,
+				308A6EB7859CC5390C8B5F17 /* External */,
+				308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +208,8 @@
 				308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */,
 				308A6E73B35803B96390E818 /* Game.m */,
 				308A66DE5C1C6C03516311A7 /* Game.h */,
+				308A68B342F59E71BB7E286A /* BoardVC.m */,
+				308A6AA364B2C1CCBC068AF7 /* BoardVC.h */,
 			);
 			path = GameCenterTest;
 			sourceTree = "<group>";
@@ -199,6 +258,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AE1AB369172018CE00851433 /* PBXTargetDependency */,
 			);
 			name = GameCenterTest;
 			productName = GameCenterTest;
@@ -230,7 +290,7 @@
 		AE76738615AF04890045843E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Betafunk;
 			};
 			buildConfigurationList = AE76738915AF04890045843E /* Build configuration list for PBXProject "GameCenterTest" */;
@@ -243,6 +303,12 @@
 			mainGroup = AE76738415AF04890045843E;
 			productRefGroup = AE76739015AF04890045843E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 308A630E958AF5FC3B68FC60 /* Products */;
+					ProjectRef = 308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AE76738E15AF04890045843E /* GameCenterTest */,
@@ -251,6 +317,30 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		308A61D9ABAAF19EE75B6739 /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = 308A6202F7873A7F7C06AF67 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		308A65586E09FB7BAB116719 /* libReactiveCocoa-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactiveCocoa-iOS.a";
+			remoteRef = 308A61F52E8539A794BF4D0F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		308A6C340F9C0F00CADE91ED /* ReactiveCocoaTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactiveCocoaTests.octest;
+			remoteRef = 308A6456A937D5BDCC80C9B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		AE76738D15AF04890045843E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -258,6 +348,7 @@
 			files = (
 				AE76739E15AF04890045843E /* InfoPlist.strings in Resources */,
 				AE7673AA15AF04890045843E /* ViewController.xib in Resources */,
+				AE1AB37817201A6A00851433 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +391,7 @@
 				308A642CD56E0F558CB6F1F2 /* Card.m in Sources */,
 				308A6BB7BF809AD64819A7FD /* NSArray+Functional.m in Sources */,
 				308A6D6397C86E0243B4B510 /* Game.m in Sources */,
+				308A6BCC7D85C842D79BA09D /* BoardVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,12 +401,18 @@
 			files = (
 				AE7673BF15AF048A0045843E /* GameCenterTestTests.m in Sources */,
 				308A64F415BAB3B1D2996DC2 /* Game.m in Sources */,
+				308A65123DCF4EBF9ADDBA7D /* BoardVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AE1AB369172018CE00851433 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactiveCocoa-iOS";
+			targetProxy = AE1AB368172018CE00851433 /* PBXContainerItemProxy */;
+		};
 		AE7673B615AF048A0045843E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AE76738E15AF04890045843E /* GameCenterTest */;
@@ -356,6 +454,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mikkel Gravgaard Nielsen (V8KBXLQLZT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -372,6 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "9B9C1A5E-4B4A-4643-B0DA-E02D39C8F60A";
 				SDKROOT = iphoneos;
 			};
@@ -383,6 +486,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mikkel Gravgaard Nielsen (V8KBXLQLZT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -393,6 +500,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "9B9C1A5E-4B4A-4643-B0DA-E02D39C8F60A";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -434,6 +542,7 @@
 				INFOPLIST_FILE = "GameCenterTestTests/GameCenterTestTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/External/ReativeCocoa/ReactiveCocoaFramework\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -451,6 +560,7 @@
 				INFOPLIST_FILE = "GameCenterTestTests/GameCenterTestTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/External/ReativeCocoa/ReactiveCocoaFramework\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
