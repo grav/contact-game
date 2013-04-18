@@ -15,5 +15,4 @@ typedef void(^LIGAuthorizationCodeFailureCallback)(NSString *errorReason);
 
 - (id)initWithSuccess:(LIGAuthorizationCodeSuccessCallback)succes andFailure:(LIGAuthorizationCodeFailureCallback)failure;
 
-
 @end
