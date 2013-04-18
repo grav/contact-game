@@ -42,6 +42,7 @@
         int endorsements = rand() % 100;
         NSString *url = [NSString stringWithFormat:@"http://localhost:8000/%@",[peep objectAtIndex:1]];
         return [Card cardWithName:[peep objectAtIndex:0]
+                         headline:@"foobar"
                          imageUrl:url
                       connections:connections
                      endorsements:endorsements];
