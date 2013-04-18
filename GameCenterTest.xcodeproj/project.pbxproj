@@ -13,6 +13,7 @@
 		19C9914FE219BDE748E28EF6 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C99EA5CE40D0C56F3EA056 /* UIImageView+AFNetworking.m */; };
 		19C9922E026C979F700E59B6 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C99EA1EB126F4FEB2A9048 /* AFImageRequestOperation.m */; };
 		19C992B202DA15AC594A986C /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9953A2BB2C23A50350D7F /* AFHTTPClient.m */; };
+		19C993049C25125452F07BCC /* CardServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C99B02491766CD37C67562 /* CardServiceImpl.m */; };
 		19C9933E52B9C935FF9BC759 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C9974A32C1EDF029F15611 /* AFNetworkActivityIndicatorManager.m */; };
 		19C994E09612FFC0A00D14A6 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C99527BD5DDA9058DD150B /* AFJSONRequestOperation.m */; };
 		19C995656DC8B66447320107 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C99A9D12B9BB229D5579B6 /* AFURLConnectionOperation.m */; };
@@ -108,9 +109,11 @@
 		19C999D9F7CC52E8E9B8359B /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
 		19C99A4F685C7B5E90E6A439 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
 		19C99A9D12B9BB229D5579B6 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		19C99B02491766CD37C67562 /* CardServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardServiceImpl.m; sourceTree = "<group>"; };
 		19C99E850E0B925283F421A3 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = AFNetworking/AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
 		19C99EA1EB126F4FEB2A9048 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
 		19C99EA5CE40D0C56F3EA056 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		19C99ED7DEFBE335A3D14ED8 /* CardServiceImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardServiceImpl.h; sourceTree = "<group>"; };
 		19C99EECBF9ED3C17E056A51 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		19C99F0CAE78B3D4366C9D3E /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = AFNetworking/AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
 		19C99F1A149E2DAD0A377EDB /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 				308A6BBC68D0AD7B623A7938 /* CardView.h */,
 				19C997F5BE619436DD69F76B /* linkedin */,
 				308A669793DBF2023162ABCE /* CardService.h */,
+				19C99B02491766CD37C67562 /* CardServiceImpl.m */,
+				19C99ED7DEFBE335A3D14ED8 /* CardServiceImpl.h */,
 			);
 			path = GameCenterTest;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				19C995656DC8B66447320107 /* AFURLConnectionOperation.m in Sources */,
 				19C99617A3964D0DBBC1C293 /* AFXMLRequestOperation.m in Sources */,
 				19C9914FE219BDE748E28EF6 /* UIImageView+AFNetworking.m in Sources */,
+				19C993049C25125452F07BCC /* CardServiceImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
