@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 
-typedef void (^CardBlock)(Card*);
-
-@interface CardService : NSObject
-+ (id)sharedInstance;
-
-- (void)newCardWithCompletion:(CardBlock)completion;
+@protocol CardServiceProtocol <NSObject>
+- (void)newCardWithCompletion:(void (^)(Card *))completion;
 @end

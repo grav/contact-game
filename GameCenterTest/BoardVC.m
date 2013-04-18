@@ -7,19 +7,20 @@
 
 
 #import "BoardVC.h"
-#import "CardService.h"
+#import "StubCardService.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "CardView.h"
 #import "ReactiveCocoa/UIControl+RACSignalSupport.h"
 //#import "UIControl+RACSignalSupport.h"
 
 @implementation BoardVC {
-
+    id<CardServiceProtocol> _cardService;
 }
 - (id)initWithGame:(Game*)game {
     self = [super init];
     if (self) {
         self.game = game;
+        _cardService = [[StubCardService alloc] init];
     }
 
     return self;
@@ -52,7 +53,7 @@
     [self.view addSubview:b];
 
     [[b rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[CardService sharedInstance] newCardWithCompletion:^(Card *card) {
+        [_cardService newCardWithCompletion:^(Card *card) {
             card.selectedProperty = @"endorsements";
             [self.game didSelectCard:card];
         }];
@@ -82,10 +83,6 @@
         NSLog(@"Received: \n%@",c);
         received.card = c;
     }];
-
-//    [[CardService sharedInstance] newCardWithCompletion:^(Card *card) {
-//        [self.game didReceiveCard:card];
-//    }];
 
 
 

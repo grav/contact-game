@@ -8,7 +8,7 @@
 
 #import "GameCenterTestTests.h"
 #import "Game.h"
-#import "CardService.h"
+#import "StubCardService.h"
 
 @implementation GameCenterTestTests
 {
@@ -56,7 +56,7 @@
 
 - (void)testService
 {
-    [[CardService sharedInstance] newCardWithCompletion:^(Card *card) {
+    [[StubCardService sharedInstance] newCardWithCompletion:^(Card *card) {
 //        NSLog(@"%@",card);
     }];
 }
