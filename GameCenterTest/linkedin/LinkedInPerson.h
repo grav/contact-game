@@ -17,6 +17,7 @@
     NSURL *_pictureURL;
     NSString *_headline;
     NSNumber *_connections;
+    NSNumber *_monthOfEmployment;
 }
 
 
@@ -27,10 +28,11 @@
 @property(nonatomic, strong) NSURL *pictureURL;
 @property(nonatomic, copy) NSString *headline;
 @property(nonatomic, strong) NSNumber *connections;
+@property(nonatomic, strong) NSNumber *monthOfEmployment;
 
-- (id)initWithId:(NSString *)id firstName:(NSString *)firstName lastName:(NSString *)lastName pictureURL:(NSURL *)pictureURL headline:(NSString *)headline connections:(NSNumber *)connections;
+- (id)initWithId:(NSString *)id firstName:(NSString *)firstName lastName:(NSString *)lastName pictureURL:(NSURL *)pictureURL headline:(NSString *)headline connections:(NSNumber *)connections monthOfEmployment:(NSNumber *)monthOfEmployment;
 
-+ (id)objectWithId:(NSString *)id firstName:(NSString *)firstName lastName:(NSString *)lastName pictureURL:(NSURL *)pictureURL headline:(NSString *)headline connections:(NSNumber *)connections;
++ (id)objectWithId:(NSString *)id firstName:(NSString *)firstName lastName:(NSString *)lastName pictureURL:(NSURL *)pictureURL headline:(NSString *)headline connections:(NSNumber *)connections monthOfEmployment:(NSNumber *)monthOfEmployment;
 
 
 @end

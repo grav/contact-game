@@ -15,11 +15,19 @@
     NSMutableArray *linkedInPersons;
 }
 
+int currentMonth;
+
 + (LinkedInService *)singleton {
     static LinkedInService *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[LinkedInService alloc] init];
+
+        NSDate *date = [NSDate date];
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:date];
+        currentMonth =  [components month] + 12 * [components year];
+
     });
     return sharedInstance;
 }
@@ -65,7 +73,15 @@
         NSArray *connections = [linkedInResult objectForKey:@"values"];
         for (NSDictionary *person in connections) {
             if ([((NSString *) [person objectForKey:@"id"]) caseInsensitiveCompare:@"private"] != NSOrderedSame) {
-                LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"]];
+
+                NSNumber *year = [[[[[person objectForKey:@"positions"] objectForKey:@"values"] objectAtIndex:0] objectForKey:@"startDate"] objectForKey:@"year"];
+                NSNumber *month = [[[[[person objectForKey:@"positions"] objectForKey:@"values"] objectAtIndex:0] objectForKey:@"startDate"] objectForKey:@"month"];
+                int monthOfEmployment = 0;
+                if (year != nil) {
+                    monthOfEmployment =  currentMonth - [month intValue] + (12 * year.intValue);
+                }
+
+                LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"] monthOfEmployment:[NSNumber numberWithInt:monthOfEmployment]];
                 [result addObject:linkedInPerson];
             }
         }
@@ -84,7 +100,7 @@
     }
 
     [self getPath:[self getLinkInUserUrl] parameters:nil success:^(AFHTTPRequestOperation *afRequest, NSDictionary *person) {
-        LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"]];
+        LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"] monthOfEmployment:0];
         success(linkedInPerson);
     }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
@@ -93,7 +109,7 @@
                     [self getAccessToken:code withSuccess:^(NSString *accessToken) {
                         [self storeAccessToken:accessToken];
                         [self getPath:[self getLinkInUserUrl] parameters:nil success:^(AFHTTPRequestOperation *afRequest, NSDictionary *person) {
-                            LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"]];
+                            LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"] monthOfEmployment:0];
                             [self hideAuthenticateView];
                             success(linkedInPerson);
                         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {

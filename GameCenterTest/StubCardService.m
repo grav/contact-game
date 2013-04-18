@@ -39,11 +39,13 @@
                     @[@"Arbejdsløs Humanist",@"humanist.jpg"]];
     NSArray *cards = [peeps mapUsingBlock:^id(NSArray *peep) {
         int connections = rand() % 100;
+        int monthsOfEmployment = rand() % 100;
         NSString *url = [NSString stringWithFormat:@"http://localhost:8000/%@",[peep objectAtIndex:1]];
         return [Card cardWithName:[peep objectAtIndex:0]
                          headline:@"foobar"
                          imageUrl:url
-                      connections:connections];
+                      connections:connections
+                monthOfEmployment:monthsOfEmployment];
     }];
     srand((unsigned int) time(NULL)); //'make sure' we don't continue to pick the same cards on both clients
     return cards;

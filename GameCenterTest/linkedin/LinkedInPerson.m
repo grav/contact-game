@@ -17,8 +17,9 @@
 @synthesize pictureURL = _pictureURL;
 @synthesize headline = _headline;
 @synthesize connections = _connections;
+@synthesize monthOfEmployment = _monthOfEmployment;
 
-- (id)initWithId:(NSString *)id firstName:(NSString *)firstName lastName:(NSString *)lastName pictureURL:(NSURL *)pictureURL headline:(NSString *)headline connections:(NSNumber *)connections {
+- (id)initWithId:(NSString *)id firstName:(NSString *)firstName lastName:(NSString *)lastName pictureURL:(NSURL *)pictureURL headline:(NSString *)headline connections:(NSNumber *)connections monthOfEmployment:(NSNumber *)monthOfEmployment {
     self = [super init];
     if (self) {
         _id = id;
@@ -27,17 +28,18 @@
         _pictureURL = pictureURL;
         _headline = headline;
         _connections = connections;
+        _monthOfEmployment = monthOfEmployment;
     }
 
     return self;
 }
 
-+ (id)objectWithId:(NSString *)id firstName:(NSString *)firstName lastName:(NSString *)lastName pictureURL:(NSURL *)pictureURL headline:(NSString *)headline connections:(NSNumber *)connections {
-    return [[LinkedInPerson alloc] initWithId:id firstName:firstName lastName:lastName pictureURL:pictureURL headline:headline connections:connections];
++ (id)objectWithId:(NSString *)id firstName:(NSString *)firstName lastName:(NSString *)lastName pictureURL:(NSURL *)pictureURL headline:(NSString *)headline connections:(NSNumber *)connections monthOfEmployment:(NSNumber *)monthOfEmployment {
+    return [[LinkedInPerson alloc] initWithId:id firstName:firstName lastName:lastName pictureURL:pictureURL headline:headline connections:connections monthOfEmployment:monthOfEmployment];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"name: %@ %@, headline: %@, connections: %@", self.firstName, self.lastName, self.headline, self.connections];
+    return [NSString stringWithFormat:@"name: %@ %@, headline: %@, connections: %@, month: %@", self.firstName, self.lastName, self.headline, self.connections, self.monthOfEmployment];
 }
 
 
