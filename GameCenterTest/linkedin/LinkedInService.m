@@ -8,7 +8,7 @@
 #import "LinkedInService.h"
 #import "AFNetworking.h"
 #import "LinkedInAuthenticationViewController.h"
-#import "LinkedInCredentails.h"
+#import "LinkedInCredentials.h"
 
 
 @implementation LinkedInService {

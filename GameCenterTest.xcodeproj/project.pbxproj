@@ -93,7 +93,7 @@
 		19C991BCB5B58D55A65B1B5C /* LinkedInPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedInPerson.m; sourceTree = "<group>"; };
 		19C9925050604A4357527460 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
 		19C9930D21274148EC99E8AB /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		19C99356AC308479195CF4B1 /* LinkedInCredentails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInCredentails.h; sourceTree = "<group>"; };
+		19C99356AC308479195CF4B1 /* LinkedInCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInCredentials.h; sourceTree = "<group>"; };
 		19C9943C0E8D9442DE5D01B4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		19C994AF5C57A65581B545DB /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
 		19C99527BD5DDA9058DD150B /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 				19C990C55DB45DF4F0E16FDB /* LinkedInAuthenticationViewController.m */,
 				19C99152E46BBAECF23CC437 /* LinkedInService.h */,
 				19C995E4D394C469C6CA3EB1 /* LinkedInService.m */,
-				19C99356AC308479195CF4B1 /* LinkedInCredentails.h */,
+				19C99356AC308479195CF4B1 /* LinkedInCredentials.h */,
 				19C99F465832BDCE6E5F5277 /* LinkedInPerson.h */,
 				19C991BCB5B58D55A65B1B5C /* LinkedInPerson.m */,
 			);
