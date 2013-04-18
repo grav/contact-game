@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LIGLinkedInViewController.h"
 
 typedef void(^LIGAuthorizationCodeSuccessCallback)(NSString *code);
 typedef void(^LIGAuthorizationCodeFailureCallback)(NSString *errorReason);

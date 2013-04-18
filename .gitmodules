@@ -1,3 +1,6 @@
 [submodule "External/ReativeCocoa"]
 	path = External/ReativeCocoa
 	url = https://github.com/ReactiveCocoa/ReactiveCocoa.git
+[submodule "External/AFNetworking"]
+	path = External/AFNetworking
+	url = https://github.com/AFNetworking/AFNetworking.git
