@@ -9,6 +9,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "CardView.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
+#import "UIImageView+AFNetworking.h"
 
 
 @interface CardView ()
@@ -41,8 +42,7 @@
 
         [RACAble(self.card) subscribeNext:^(Card *c) {
             l.text = c.contactName;
-            NSData *d = [NSData dataWithContentsOfURL:[NSURL URLWithString:c.imageUrl]];
-            iv.image = [[UIImage alloc] initWithData:d];
+            [iv setImageWithURL:[NSURL URLWithString:c.imageUrl]];
             NSNumber *count = [c.properties objectForKey:c.selectedProperty];
             cl.text = c ? [NSString stringWithFormat:@"Connections: %@",count] : @"";
         }];
