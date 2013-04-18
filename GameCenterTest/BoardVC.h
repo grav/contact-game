@@ -13,7 +13,6 @@
 @interface BoardVC : UIViewController
 
 @property (nonatomic, strong) Game *game;
-@property (nonatomic, weak) ConnectVC *connectVC;
 
 - (id)initWithGame:(Game*)game;
 

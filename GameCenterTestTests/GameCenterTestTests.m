@@ -18,9 +18,8 @@
 - (void)setUp
 {
     [super setUp];
-
-    _a = [Card cardWithName:@"Foo" connections:10 endorsements:10];
-    _b = [Card cardWithName:@"Bar" connections:10 endorsements:20];
+    _a = [Card cardWithName:@"Foo" headline:@"whatever" imageUrl:@"bar" connections:10];
+    _b = [Card cardWithName:@"Bar" headline:@"whatever" imageUrl:@"bar" connections:10];
     _game = [[Game alloc] init];
 
 }
@@ -54,11 +53,6 @@
 
 }
 
-- (void)testService
-{
-    [[StubCardService sharedInstance] newCardWithCompletion:^(Card *card) {
-//        NSLog(@"%@",card);
-    }];
-}
+
 
 @end
