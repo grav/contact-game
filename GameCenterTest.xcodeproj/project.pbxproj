@@ -22,11 +22,13 @@
 		19C99C12327FDFD0D495F0A7 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C995626047BCAA267C1BDC /* AFHTTPRequestOperation.m */; };
 		308A6226DD4AEA4B0CA5BF2A /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A62EAE2E8725534566342 /* CardView.m */; };
 		308A642CD56E0F558CB6F1F2 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6DB23408A8A40106A431 /* Card.m */; };
+		308A64580E3DF2990F42A354 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308A620302086157DCE44B66 /* SystemConfiguration.framework */; };
 		308A64F415BAB3B1D2996DC2 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* Game.m */; };
 		308A65123DCF4EBF9ADDBA7D /* BoardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A68B342F59E71BB7E286A /* BoardVC.m */; };
 		308A6BB7BF809AD64819A7FD /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */; };
 		308A6BCC7D85C842D79BA09D /* BoardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A68B342F59E71BB7E286A /* BoardVC.m */; };
 		308A6D2C98289E9A9BCC39D0 /* CardService.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A64D9205A7F1E37F21E25 /* CardService.m */; };
+		308A6D426FA6A17448D23EE0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308A6B679A7D8BCDA378DE77 /* MobileCoreServices.framework */; };
 		308A6D6397C86E0243B4B510 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* Game.m */; };
 		AE1AB3671720181F00851433 /* libReactiveCocoa-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 308A65586E09FB7BAB116719 /* libReactiveCocoa-iOS.a */; };
 		AE1AB37817201A6A00851433 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1AB37717201A6A00851433 /* Default-568h@2x.png */; };
@@ -115,6 +117,7 @@
 		19C99F465832BDCE6E5F5277 /* LinkedInPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInPerson.h; sourceTree = "<group>"; };
 		19C99FE50B57586871BF9576 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = AFNetworking/AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = External/ReativeCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		308A620302086157DCE44B66 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = ../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
 		308A62EAE2E8725534566342 /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		308A64D9205A7F1E37F21E25 /* CardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardService.m; sourceTree = "<group>"; };
 		308A66DE5C1C6C03516311A7 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 		308A6AA364B2C1CCBC068AF7 /* BoardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardVC.h; sourceTree = "<group>"; };
 		308A6ACBA7B14B237C24DA20 /* CardService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardService.h; sourceTree = "<group>"; };
 		308A6B64E0B07E3677620398 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		308A6B679A7D8BCDA378DE77 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = ../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = "<group>"; };
 		308A6BBC68D0AD7B623A7938 /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
 		308A6DB23408A8A40106A431 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				AE76739815AF04890045843E /* CoreGraphics.framework in Frameworks */,
 				AE7673C915AF04AC0045843E /* GameKit.framework in Frameworks */,
 				AE60B40515B61F4200CA6669 /* AVFoundation.framework in Frameworks */,
+				308A6D426FA6A17448D23EE0 /* MobileCoreServices.framework in Frameworks */,
+				308A64580E3DF2990F42A354 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +278,8 @@
 				AE76739515AF04890045843E /* Foundation.framework */,
 				AE76739715AF04890045843E /* CoreGraphics.framework */,
 				AE7673B115AF048A0045843E /* SenTestingKit.framework */,
+				308A6B679A7D8BCDA378DE77 /* MobileCoreServices.framework */,
+				308A620302086157DCE44B66 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
