@@ -57,11 +57,13 @@
 
 + (int)scoreFromResult:(Result)result
 {
+    int score = 0;
     switch (result){
-        case ResultTie: return 1;
-        case ResultLoss: return 0;
-        case ResultVictory: return 2;
+        case ResultTie: score = 1;
+        case ResultLoss: score = 0;
+        case ResultVictory: score = 2;
     }
+    return score;
 }
 
 
