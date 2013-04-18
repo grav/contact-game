@@ -10,6 +10,7 @@
 
 #import "ConnectVC.h"
 #import "BoardVC.h"
+#import "AFNetworking.h"
 
 @implementation AppDelegate
 
@@ -19,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     ConnectVC *vc = [[ConnectVC alloc] initWithNibName:@"ViewController" bundle:nil];
     UINavigationController *rootNavigationController = [[UINavigationController alloc] initWithRootViewController:vc];
     vc.navigationController.navigationBarHidden = YES;
