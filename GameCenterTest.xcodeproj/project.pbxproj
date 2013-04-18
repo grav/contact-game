@@ -25,7 +25,7 @@
 		AE76739E15AF04890045843E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE76739C15AF04890045843E /* InfoPlist.strings */; };
 		AE7673A015AF04890045843E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE76739F15AF04890045843E /* main.m */; };
 		AE7673A415AF04890045843E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7673A315AF04890045843E /* AppDelegate.m */; };
-		AE7673A715AF04890045843E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7673A615AF04890045843E /* ViewController.m */; };
+		AE7673A715AF04890045843E /* ConnectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7673A615AF04890045843E /* ConnectVC.m */; };
 		AE7673AA15AF04890045843E /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7673A815AF04890045843E /* ViewController.xib */; };
 		AE7673B215AF048A0045843E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7673B115AF048A0045843E /* SenTestingKit.framework */; };
 		AE7673B315AF048A0045843E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE76739315AF04890045843E /* UIKit.framework */; };
@@ -101,8 +101,8 @@
 		AE7673A115AF04890045843E /* GameCenterTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GameCenterTest-Prefix.pch"; sourceTree = "<group>"; };
 		AE7673A215AF04890045843E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AE7673A315AF04890045843E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AE7673A515AF04890045843E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AE7673A615AF04890045843E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AE7673A515AF04890045843E /* ConnectVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectVC.h; sourceTree = "<group>"; };
+		AE7673A615AF04890045843E /* ConnectVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectVC.m; sourceTree = "<group>"; };
 		AE7673A915AF04890045843E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		AE7673B015AF048A0045843E /* GameCenterTestTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCenterTestTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7673B115AF048A0045843E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -199,8 +199,8 @@
 			children = (
 				AE7673A215AF04890045843E /* AppDelegate.h */,
 				AE7673A315AF04890045843E /* AppDelegate.m */,
-				AE7673A515AF04890045843E /* ViewController.h */,
-				AE7673A615AF04890045843E /* ViewController.m */,
+				AE7673A515AF04890045843E /* ConnectVC.h */,
+				AE7673A615AF04890045843E /* ConnectVC.m */,
 				AE7673A815AF04890045843E /* ViewController.xib */,
 				AE76739A15AF04890045843E /* Supporting Files */,
 				308A64D9205A7F1E37F21E25 /* CardService.m */,
@@ -390,7 +390,7 @@
 			files = (
 				AE7673A015AF04890045843E /* main.m in Sources */,
 				AE7673A415AF04890045843E /* AppDelegate.m in Sources */,
-				AE7673A715AF04890045843E /* ViewController.m in Sources */,
+				AE7673A715AF04890045843E /* ConnectVC.m in Sources */,
 				AE75FA3915B1AE95000F2706 /* Peer.m in Sources */,
 				308A6D2C98289E9A9BCC39D0 /* CardService.m in Sources */,
 				308A642CD56E0F558CB6F1F2 /* Card.m in Sources */,

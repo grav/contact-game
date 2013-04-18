@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ConnectVC.h
 //  GameCenterTest
 //
 //  Created by Mikkel Gravgaard on 12/07/12.
@@ -10,7 +10,7 @@
 
 #import <GameKit/GameKit.h>
 
-@interface ViewController : UIViewController<GKSessionDelegate,UITableViewDataSource>
+@interface ConnectVC : UIViewController<GKSessionDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *displayNameTextField;
 
 @end

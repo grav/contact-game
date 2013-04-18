@@ -1,15 +1,15 @@
 //
-//  ViewController.m
+//  ConnectVC.m
 //  GameCenterTest
 //
 //  Created by Mikkel Gravgaard on 12/07/12.
 //  Copyright (c) 2012 Betafunk. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ConnectVC.h"
 #import "Peer.h"
 #import <AVFoundation/AVPlayer.h>
-@interface ViewController ()
+@interface ConnectVC ()
 @property (nonatomic,strong) GKSession *session;
 @property (nonatomic,strong) NSMutableDictionary *peers;
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -20,7 +20,7 @@ static NSString *kSessionId = @"MySession";
 static NSTimeInterval kConnectionTimeout = 10;
 static NSString *kCellId = @"PeerTableCell";
 
-@implementation ViewController
+@implementation ConnectVC
 
 - (void)viewDidLoad
 {
@@ -53,11 +53,13 @@ static NSString *kCellId = @"PeerTableCell";
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)didTapInit:(id)sender {
+- (IBAction)didTapInit:(UIButton *)sender {
     self.session = [[GKSession alloc] initWithSessionID:kSessionId displayName:self.displayNameTextField.text sessionMode:GKSessionModePeer];
     self.session.delegate = self;
     self.displayNameTextField.enabled = NO;
     self.session.available = YES;
+    [sender setTitle:@"Init'ed..." forState:UIControlStateNormal];
+    sender.enabled = NO;
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -79,12 +81,22 @@ static NSString *kCellId = @"PeerTableCell";
     return cell;
 }
 
+#pragma mark - UITVDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Peer *p = [self.peers objectForKey:[[self.peers allKeys] objectAtIndex:indexPath.row]];
+    [self.session connectToPeer:p.peerID withTimeout:kConnectionTimeout];
+    tableView.allowsSelection = NO;
+}
+
+
 #pragma mark - GKSessionDelegate methods
  - (void)session:(GKSession *)session
 connectionWithPeerFailed:(NSString *)peerID
        withError:(NSError *)error
 {
     NSLog(@"connectionWithPeerFailed: %@, error: %@",peerID,error);
+    self.table.allowsSelection = YES;
 }
 
 - (void)session:(GKSession *)session didFailWithError:(NSError *)error
@@ -95,6 +107,7 @@ connectionWithPeerFailed:(NSString *)peerID
 - (void)session:(GKSession *)session didReceiveConnectionRequestFromPeer:(NSString *)peerID
 {
     NSLog(@"didReceiveConnectionRequestFromPeer: %@",peerID);
+    self.table.allowsSelection = NO;
     NSError *e = nil;
     [self.session acceptConnectionFromPeer:peerID error:&e];
 }
@@ -113,7 +126,7 @@ connectionWithPeerFailed:(NSString *)peerID
     NSLog(@"peer: %@ didChangeState: %d",p.displayName,p.state);
     switch (p.state) {
         case GKPeerStateAvailable:
-            [self.session connectToPeer:peerID withTimeout:kConnectionTimeout];
+//            [self.session connectToPeer:peerID withTimeout:kConnectionTimeout];
             break;
         case GKPeerStateUnavailable:
             [self.peers removeObjectForKey:peerID];
