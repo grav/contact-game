@@ -41,6 +41,11 @@
     [b setTitle:@"Pick a card" forState:UIControlStateNormal];
     [self.view addSubview:b];
 
+    RAC(b, enabled) = [RACSignal combineLatest:@[RACAble(self.game.selectedCard),RACAble(self.game.receivedCard)]
+    reduce:^(Card *own, Card *other){
+        return @((own==nil && other!=nil ) || (own!=nil && other!=nil));
+    }];
+
     // 320 x 480
     CardView *selected = [[CardView alloc] initWithFrame:CGRectMake(15,50,150, 200)];
     [self.view addSubview:selected];
