@@ -10,11 +10,14 @@
 #import "Peer.h"
 #import "BoardVC.h"
 #import <AVFoundation/AVPlayer.h>
+#import "ReactiveCocoa/ReactiveCocoa.h"
 @interface ConnectVC ()
 @property (nonatomic,strong) GKSession *session;
 @property (nonatomic,strong) NSMutableDictionary *peers;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic,strong) AVPlayer *player;
+@property (nonatomic, strong) Peer *connectedPeer;
+@property (nonatomic, strong) Game *game;
 @end
 
 static NSString *kSessionId = @"MySession";
@@ -61,6 +64,7 @@ static NSString *kCellId = @"PeerTableCell";
     self.session.available = YES;
     [sender setTitle:@"Init'ed..." forState:UIControlStateNormal];
     sender.enabled = NO;
+    [self.session setDataReceiveHandler:self withContext:nil];
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -135,6 +139,7 @@ connectionWithPeerFailed:(NSString *)peerID
             self.table.allowsSelection = NO;
             break;
         case GKPeerStateConnected:
+            self.connectedPeer = p;
             [self showBoard];
             break;
         default:
@@ -143,10 +148,29 @@ connectionWithPeerFailed:(NSString *)peerID
     [self.table reloadData];
 }
 
+- (void) receiveData:(NSData *)data fromPeer:(NSString *)peer inSession: (GKSession *)session context:(void *)context
+{
+    NSCAssert(peer==self.connectedPeer.peerID,@"Peer id %@ and %@ differ",peer,self.connectedPeer.peerID);
+    self.game.receivedCard = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
+
+#pragma mark - Helper
 - (void) showBoard
 {
-    UIViewController *vc = [[BoardVC alloc] init];
+    Game *game = [[Game alloc] init];
+
+    UIViewController *vc = [[BoardVC alloc] initWithGame:game];
     [self presentModalViewController:vc animated:YES];
+    [RACAble(self.game.selectedCard) subscribeNext:^(Card *c) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:c];
+        [self.session sendData:data toPeers:@[self.connectedPeer] withDataMode:GKSendDataReliable error:NULL];
+
+    }];
+//    [RACAble(game.receivedCard) subscribeNext:^(Card *c) {
+//        NSLog(@"Received: \n%@",c);
+////        received.card = c;
+//    }];
 
 }
 

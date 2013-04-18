@@ -16,10 +16,18 @@
 @implementation BoardVC {
 
 }
+- (id)initWithGame:(Game*)game {
+    self = [super init];
+    if (self) {
+        self.game = game;
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.game = [[Game alloc] init];
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 250,320, 50)];
     l.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:l];
