@@ -5,22 +5,22 @@
 //
 
 
-#import "LIGLinkedInService.h"
+#import "LinkedInService.h"
 #import "AFNetworking.h"
-#import "LIGLinkedInAuthentiationViewController.h"
+#import "LinkedInAuthenticationViewController.h"
 #import "LinkedInCredentails.h"
 
 
-@implementation LIGLinkedInService {
+@implementation LinkedInService {
     LinkedInPerson *user;
     NSMutableArray *linkedInPersons;
 }
 
-+ (LIGLinkedInService *)singleton {
-    static LIGLinkedInService *sharedInstance = nil;
++ (LinkedInService *)singleton {
+    static LinkedInService *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[LIGLinkedInService alloc] init];
+        sharedInstance = [[LinkedInService alloc] init];
     });
     return sharedInstance;
 }
@@ -89,7 +89,7 @@
         success(linkedInPerson);
     }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
-        LIGLinkedInAuthentiationViewController *authentiationViewController = [[LIGLinkedInAuthentiationViewController alloc]
+        LinkedInAuthenticationViewController *authentiationViewController = [[LinkedInAuthenticationViewController alloc]
                 initWithSuccess:^(NSString *code) {
                     [self getAccessToken:code withSuccess:^(NSString *accessToken) {
                         [self storeAccessToken:accessToken];
@@ -138,7 +138,7 @@
     return [linkedInPersons objectAtIndex:(NSUInteger) (arc4random() % [linkedInPersons count])];
 }
 
-- (void)showAuthenticateView:(LIGLinkedInAuthentiationViewController *)authentiationViewController {
+- (void)showAuthenticateView:(LinkedInAuthenticationViewController *)authentiationViewController {
     UIViewController *rootViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
     [(UINavigationController *) rootViewController pushViewController:authentiationViewController animated:YES];
 }

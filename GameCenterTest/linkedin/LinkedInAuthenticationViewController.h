@@ -1,5 +1,5 @@
 //
-//  LIGLinkedInAuthentiationViewController.h
+//  LinkedInAuthenticationViewController.h
 //  LinkedInIntegration
 //
 //  Created by Jacob von Eyben on 4/18/13.
@@ -11,7 +11,7 @@
 typedef void(^LIGAuthorizationCodeSuccessCallback)(NSString *code);
 typedef void(^LIGAuthorizationCodeFailureCallback)(NSString *errorReason);
 
-@interface LIGLinkedInAuthentiationViewController : UIViewController
+@interface LinkedInAuthenticationViewController : UIViewController
 
 - (id)initWithSuccess:(LIGAuthorizationCodeSuccessCallback)succes andFailure:(LIGAuthorizationCodeFailureCallback)failure;
 

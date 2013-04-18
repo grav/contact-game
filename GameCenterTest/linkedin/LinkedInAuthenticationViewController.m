@@ -1,5 +1,5 @@
 //
-//  LIGLinkedInAuthentiationViewController.m
+//  LinkedInAuthenticationViewController.m
 //  LinkedInIntegration
 //
 //  Created by Jacob von Eyben on 4/18/13.
@@ -7,18 +7,18 @@
 //
 
 
-#import "LIGLinkedInAuthentiationViewController.h"
+#import "LinkedInAuthenticationViewController.h"
 
-@interface LIGLinkedInAuthentiationViewController ()
+@interface LinkedInAuthenticationViewController ()
 
-
-@end
-
-@interface LIGLinkedInAuthentiationViewController (UIWebViewDelegate) <UIWebViewDelegate>
 
 @end
 
-@implementation LIGLinkedInAuthentiationViewController {
+@interface LinkedInAuthenticationViewController (UIWebViewDelegate) <UIWebViewDelegate>
+
+@end
+
+@implementation LinkedInAuthenticationViewController {
     LIGAuthorizationCodeSuccessCallback _successCallback;
     LIGAuthorizationCodeFailureCallback _failureCallback;
     UIWebView *authenticationWebView;
@@ -64,7 +64,7 @@
 
 @end
 
-@implementation LIGLinkedInAuthentiationViewController (UIWebViewDelegate)
+@implementation LinkedInAuthenticationViewController (UIWebViewDelegate)
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSLog(@"About to load request: %@", [[request URL] absoluteString]);
     NSString *url = [[request URL] absoluteString];
