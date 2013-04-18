@@ -12,18 +12,16 @@
 
 }
 
-- (void)determineScore
-{
-    NSString *selectedProperty = self.selectedCard.selectedProperty?self.selectedCard.selectedProperty:self.receivedCard.selectedProperty;
+- (void)determineScore {
+    NSString *selectedProperty = self.selectedCard.selectedProperty ? self.selectedCard.selectedProperty : self.receivedCard.selectedProperty;
     Result result = [Game compareOwnCard:self.selectedCard withOtherCard:self.receivedCard consideringProperty:selectedProperty];
     self.score += [Game scoreFromResult:result];
 }
 
-- (void)didSelectCard:(Card *)card
-{
-    NSCAssert(!self.selectedCard,@"A card is already selected!");
+- (void)didSelectCard:(Card *)card {
+    NSCAssert(!self.selectedCard, @"A card is already selected!");
     self.selectedCard = card;
-    if(self.receivedCard){
+    if (self.receivedCard) {
         [self determineScore];
     }
 
@@ -32,9 +30,9 @@
 
 
 - (void)didReceiveCard:(Card *)card {
-    NSCAssert(!self.receivedCard,@"A card has already been received!");
+    NSCAssert(!self.receivedCard, @"A card has already been received!");
     self.receivedCard = card;
-    if(self.selectedCard){
+    if (self.selectedCard) {
         [self determineScore];
     }
 }
@@ -42,12 +40,12 @@
 
 
 #pragma mark - Util
-+ (Result)compareOwnCard:(Card*)own withOtherCard:(Card *)other consideringProperty:(NSString *)property {
-    int ownVal = [[own.properties objectForKey:property] intValue];
-    int otherVal = [[other.properties objectForKey:property] intValue];
-    if(ownVal > otherVal){
++ (Result)compareOwnCard:(Card *)own withOtherCard:(Card *)other consideringProperty:(NSString *)property {
+    NSNumber *ownVal = [own.properties objectForKey:property];
+    NSNumber *otherVal = [other.properties objectForKey:property];
+    if ([ownVal compare:otherVal] == NSOrderedDescending) {
         return ResultVictory;
-    } else if (otherVal < ownVal){
+    } else if ([ownVal compare:otherVal] == NSOrderedAscending) {
         return ResultLoss;
     } else {
         return ResultTie;
@@ -55,10 +53,9 @@
 
 }
 
-+ (int)scoreFromResult:(Result)result
-{
++ (int)scoreFromResult:(Result)result {
     int score = 0;
-    switch (result){
+    switch (result) {
         case ResultTie:
             score = 1;
             break;
@@ -71,7 +68,6 @@
     }
     return score;
 }
-
 
 
 @end

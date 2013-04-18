@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *headline;
 @property (nonatomic, strong) NSString *imageUrl;
 
-+ (Card*)cardWithName:(NSString *)name headline:(NSString *)headline imageUrl:(NSString *)url connections:(int)connections monthOfEmployment:(int)endorsements;
++ (Card*)cardWithName:(NSString *)name headline:(NSString *)headline imageUrl:(NSString *)url connections:(NSNumber *)connections monthOfEmployment:(NSNumber *)monthOfEmployment;
 
 
 

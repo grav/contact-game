@@ -44,8 +44,8 @@
         return [Card cardWithName:[peep objectAtIndex:0]
                          headline:@"foobar"
                          imageUrl:url
-                      connections:connections
-                monthOfEmployment:monthsOfEmployment];
+                      connections:@(connections)
+                monthOfEmployment:@(monthsOfEmployment)];
     }];
     srand((unsigned int) time(NULL)); //'make sure' we don't continue to pick the same cards on both clients
     return cards;

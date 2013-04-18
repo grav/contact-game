@@ -21,14 +21,14 @@
     NSDictionary *_properties;
 }
 
-+ (Card *)cardWithName:(NSString *)name headline:(NSString *)headline imageUrl:(NSString *)url connections:(int)connections monthOfEmployment:(int)monthOfEmployment {
++ (Card *)cardWithName:(NSString *)name headline:(NSString *)headline imageUrl:(NSString *)url connections:(NSNumber *)connections monthOfEmployment:(NSNumber *)monthOfEmployment {
     Card *c = [[Card alloc] init];
     c.contactName = name;
     c.headline = headline;
     c.properties = @{
-        @"connections": @(connections),
+        @"connections": connections,
         @"headline": @(headline.length),
-        @"monthOfEmployment": @(monthOfEmployment),
+        @"monthOfEmployment": monthOfEmployment
     };
     c.imageUrl = url;
     return c;
