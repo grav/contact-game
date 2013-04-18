@@ -39,7 +39,7 @@
     [self.view addSubview:l];
 
     UIButton *b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    b.frame = CGRectMake(20, 400, 320-40, 60);
+    b.frame = CGRectMake(20, 380, 320-40, 60);
     [b setTitle:@"Pick a card" forState:UIControlStateNormal];
     [self.view addSubview:b];
 
