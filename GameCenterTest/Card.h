@@ -15,6 +15,6 @@
 + (Card*)cardWithName:(NSString *)name connections:(int)connections endorsements:(int)endorsements;
 
 
-- (BOOL)winsOverCard:(Card*)consideringProperty:(NSString*)property;
+- (BOOL)winsOverCard:(Card*)car consideringProperty:(NSString*)property;
 
 @end

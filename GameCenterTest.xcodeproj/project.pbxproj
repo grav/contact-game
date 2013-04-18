@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		308A642CD56E0F558CB6F1F2 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6DB23408A8A40106A431 /* Card.m */; };
+		308A64F415BAB3B1D2996DC2 /* GameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* GameVC.m */; };
 		308A6BB7BF809AD64819A7FD /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */; };
 		308A6D2C98289E9A9BCC39D0 /* CardService.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A64D9205A7F1E37F21E25 /* CardService.m */; };
 		308A6D6397C86E0243B4B510 /* GameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* GameVC.m */; };
@@ -307,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7673BF15AF048A0045843E /* GameCenterTestTests.m in Sources */,
+				308A64F415BAB3B1D2996DC2 /* GameVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

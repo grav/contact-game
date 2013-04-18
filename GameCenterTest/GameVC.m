@@ -8,23 +8,14 @@
 
 #import "GameVC.h"
 
-typedef enum {
-    ResultVictory,
-    ResultLoss,
-    ResultTie
-} Result;
-
-
 @implementation GameVC {
 
 }
 
-
 - (void)determineScore
 {
-    assert(self.selectedCard.selectedProperty || self.receivedCard.selectedProperty);
     NSString *selectedProperty = self.selectedCard.selectedProperty?self.selectedCard.selectedProperty:self.receivedCard.selectedProperty;
-    Result result = [GameVC compareOwnCard:self.selectedCard withOtherCard:self.receivedCard consideringProperty:selectedProperty]
+    Result result = [GameVC compareOwnCard:self.selectedCard withOtherCard:self.receivedCard consideringProperty:selectedProperty];
     self.score += [GameVC scoreFromResult:result];
 }
 
