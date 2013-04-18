@@ -12,7 +12,6 @@
 
 
 @interface LIGLinkedInService : AFHTTPClient
-
 + (LIGLinkedInService *)singleton;
 
 - (void)getUser:(void (^)(LinkedInPerson *))success andFailure:(void (^)(NSString *))failure;
