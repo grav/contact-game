@@ -7,12 +7,12 @@
 //
 
 #import "GameCenterTestTests.h"
-#import "GameVC.h"
+#import "Game.h"
 #import "CardService.h"
 
 @implementation GameCenterTestTests
 {
-    GameVC *_game;
+    Game *_game;
     Card *_a, *_b;
 }
 - (void)setUp
@@ -21,7 +21,7 @@
 
     _a = [Card cardWithName:@"Foo" connections:10 endorsements:10];
     _b = [Card cardWithName:@"Bar" connections:10 endorsements:20];
-    _game = [[GameVC alloc] init];
+    _game = [[Game alloc] init];
 
 }
 
@@ -35,9 +35,9 @@
 - (void)testCard
 {
     _b.selectedProperty = @"endorsements";
-    Result r = [GameVC compareOwnCard:_a withOtherCard:_b consideringProperty:@"connections"];
+    Result r = [Game compareOwnCard:_a withOtherCard:_b consideringProperty:@"connections"];
     STAssertEquals(r, ResultTie, @"Tie");
-    r = [GameVC compareOwnCard:_a withOtherCard:_b consideringProperty:@"endorsements"];
+    r = [Game compareOwnCard:_a withOtherCard:_b consideringProperty:@"endorsements"];
     STAssertEquals(r, ResultLoss, @"Loss");
 }
 

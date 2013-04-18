@@ -6,17 +6,17 @@
 //
 
 
-#import "GameVC.h"
+#import "Game.h"
 
-@implementation GameVC {
+@implementation Game {
 
 }
 
 - (void)determineScore
 {
     NSString *selectedProperty = self.selectedCard.selectedProperty?self.selectedCard.selectedProperty:self.receivedCard.selectedProperty;
-    Result result = [GameVC compareOwnCard:self.selectedCard withOtherCard:self.receivedCard consideringProperty:selectedProperty];
-    self.score += [GameVC scoreFromResult:result];
+    Result result = [Game compareOwnCard:self.selectedCard withOtherCard:self.receivedCard consideringProperty:selectedProperty];
+    self.score += [Game scoreFromResult:result];
     self.receivedCard = nil;
     self.selectedCard = nil;
 }

@@ -17,7 +17,7 @@ typedef enum {
 
 
 
-@interface GameVC : UIViewController
+@interface Game : NSObject
 @property int score;
 @property (nonatomic, strong) Card *selectedCard,*receivedCard;
 @property (nonatomic) BOOL willSelectProperty;
