@@ -120,7 +120,7 @@
 		308A620302086157DCE44B66 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = ../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
 		308A62EAE2E8725534566342 /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		308A64D9205A7F1E37F21E25 /* StubCardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubCardService.m; sourceTree = "<group>"; };
-		308A669793DBF2023162ABCE /* CardServiceProtocol1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardServiceProtocol1.h; sourceTree = "<group>"; };
+		308A669793DBF2023162ABCE /* CardService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardService.h; sourceTree = "<group>"; };
 		308A66DE5C1C6C03516311A7 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		308A68B342F59E71BB7E286A /* BoardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardVC.m; sourceTree = "<group>"; };
 		308A6AA364B2C1CCBC068AF7 /* BoardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardVC.h; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 				308A62EAE2E8725534566342 /* CardView.m */,
 				308A6BBC68D0AD7B623A7938 /* CardView.h */,
 				19C997F5BE619436DD69F76B /* linkedin */,
-				308A669793DBF2023162ABCE /* CardServiceProtocol1.h */,
+				308A669793DBF2023162ABCE /* CardService.h */,
 			);
 			path = GameCenterTest;
 			sourceTree = "<group>";

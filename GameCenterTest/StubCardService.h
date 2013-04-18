@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
-#import "CardServiceProtocol1.h"
+#import "CardService.h"
 
 typedef void (^CardBlock)(Card*);
 
