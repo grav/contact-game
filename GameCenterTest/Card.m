@@ -9,6 +9,7 @@
 #import "Card.h"
 
 #define kContactName @"ContactName"
+#define kHeadline @"Headline"
 #define kProperties @"Properties"
 #define kSelectedProperty @"SelectedProperty"
 #define kImageUrl @"ImageUrl"
@@ -20,11 +21,13 @@
     NSDictionary *_properties;
 }
 
-+ (Card *)cardWithName:(NSString *)name imageUrl:(NSString *)url connections:(int)connections endorsements:(int)endorsements {
++ (Card *)cardWithName:(NSString *)name headline:(NSString *)headline imageUrl:(NSString *)url connections:(int)connections endorsements:(int)endorsements {
     Card *c = [[Card alloc] init];
     c.contactName = name;
+    c.headline = headline;
     c.properties = @{
         @"connections": @(connections),
+        @"headline": @(headline.length),
         @"endorsements": @(endorsements)
     };
     c.imageUrl = url;
@@ -40,6 +43,7 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:_properties forKey:kProperties];
     [coder encodeObject:_contactName forKey:kContactName];
+    [coder encodeObject:_headline forKey:kHeadline];
     [coder encodeObject:_selectedProperty forKey:kSelectedProperty];
     [coder encodeObject:_imageUrl forKey:kImageUrl];
 }
@@ -47,6 +51,7 @@
 - (id)initWithCoder:(NSCoder *)coder {
     self.properties = [coder decodeObjectForKey:kProperties];
     self.contactName = [coder decodeObjectForKey:kContactName];
+    self.headline = [coder decodeObjectForKey:kHeadline];
     self.selectedProperty = [coder decodeObjectForKey:kSelectedProperty];
     self.imageUrl = [coder decodeObjectForKey:kImageUrl];
     return self;
