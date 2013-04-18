@@ -158,13 +158,13 @@ connectionWithPeerFailed:(NSString *)peerID
 #pragma mark - Helper
 - (void) showBoard
 {
-    Game *game = [[Game alloc] init];
+    self.game = [[Game alloc] init];
 
-    UIViewController *vc = [[BoardVC alloc] initWithGame:game];
+    UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
     [self presentModalViewController:vc animated:YES];
     [RACAble(self.game.selectedCard) subscribeNext:^(Card *c) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:c];
-        [self.session sendData:data toPeers:@[self.connectedPeer] withDataMode:GKSendDataReliable error:NULL];
+        [self.session sendData:data toPeers:@[self.connectedPeer.peerID] withDataMode:GKSendDataReliable error:NULL];
 
     }];
 //    [RACAble(game.receivedCard) subscribeNext:^(Card *c) {

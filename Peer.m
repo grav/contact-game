@@ -61,4 +61,10 @@
     return _displayName;
 }
 
+- (int) intValue
+{
+    return 2+2;
+}
+
+
 @end
