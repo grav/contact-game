@@ -18,12 +18,13 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.game = [[Game alloc] init];
-
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 250,320, 50)];
+    l.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:l];
     [RACAble(self.game.score) subscribeNext:^(NSNumber *n) {
         l.text = [NSString stringWithFormat:@"Score: %@",n];
     }];
+    self.game.score = 0;
 
     l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 50)];
     l.text = @"Selected:";
@@ -36,11 +37,13 @@
     [self.view addSubview:l];
 
     // 320 x 480
-    CardView *selected = [[CardView alloc] initWithFrame:CGRectMake(0,50,150, 200)];
+    CardView *selected = [[CardView alloc] initWithFrame:CGRectMake(15,50,150, 200)];
     [self.view addSubview:selected];
+    selected.transform = CGAffineTransformMakeRotation((CGFloat) (-M_PI_4/8.0));
 
-    CardView *received = [[CardView alloc] initWithFrame:CGRectMake(320-150,50,150, 200)];
+    CardView *received = [[CardView alloc] initWithFrame:CGRectMake(320-150-20,50,150, 200)];
     [self.view addSubview:received];
+    received.transform = CGAffineTransformMakeRotation((CGFloat) (M_PI_4/7.5));
 
     [RACAble(self.game.selectedCard) subscribeNext:^(Card *c) {
         NSLog(@"Selected: \n%@",c);

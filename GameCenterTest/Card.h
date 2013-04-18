@@ -12,7 +12,8 @@
 @property (nonatomic, strong) NSDictionary *properties;
 @property (nonatomic, strong) NSString *selectedProperty;
 @property (nonatomic, strong) NSString *contactName;
-+ (Card*)cardWithName:(NSString *)name connections:(int)connections endorsements:(int)endorsements;
+@property (nonatomic, strong) NSString *imageUrl;
++ (Card*)cardWithName:(NSString *)name imageUrl:(NSString *)url connections:(int)connections endorsements:(int)endorsements;
 
 
 

@@ -30,13 +30,21 @@
 + (NSArray *)stubCards
 {
     srand(1234567894);   // make sure stub data on each client is the same
-    NSArray *names =
-            @[@"Mark Zuckerberg", @"Anne Sofie 'Danske Bank' Bille",@"Torben Hyllefar",@"Late Steve Jobs",
-              @"Jacob Von Eyben", @"Arbejdsloes Humanist"];
-    NSArray *cards = [names mapUsingBlock:^id(NSString *name) {
+    NSArray *peeps =
+            @[
+                    @[@"Mark Zuckerberg",@"mark.jpg"],
+                    @[@"Anne Sofie Bille",@"annesofie.jpg"],
+                    @[@"Peter Hugo", @"peter.jpg"],
+                    @[@"Late Steve Jobs",@"steve.jpg"],
+                    @[@"Arbejdsløs Humanist",@"humanist.jpg"]];
+    NSArray *cards = [peeps mapUsingBlock:^id(NSArray *peep) {
         int connections = rand() % 100;
         int endorsements = rand() % 100;
-        return [Card cardWithName:name connections:connections endorsements:endorsements];
+        NSString *url = [NSString stringWithFormat:@"http://localhost:8000/%@",[peep objectAtIndex:1]];
+        return [Card cardWithName:[peep objectAtIndex:0]
+                         imageUrl:url
+                      connections:connections
+                     endorsements:endorsements];
     }];
     srand((unsigned int) time(NULL)); //'make sure' we don't continue to pick the same cards on both clients
     return cards;

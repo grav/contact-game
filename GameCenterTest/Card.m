@@ -11,6 +11,7 @@
 #define kContactName @"ContactName"
 #define kProperties @"Properties"
 #define kSelectedProperty @"SelectedProperty"
+#define kImageUrl @"ImageUrl"
 
 @interface Card ()
 @end
@@ -19,18 +20,19 @@
     NSDictionary *_properties;
 }
 
-+ (Card *)cardWithName:(NSString *)name connections:(int)connections endorsements:(int)endorsements {
++ (Card *)cardWithName:(NSString *)name imageUrl:(NSString *)url connections:(int)connections endorsements:(int)endorsements {
     Card *c = [[Card alloc] init];
     c.contactName = name;
     c.properties = @{
         @"connections": @(connections),
         @"endorsements": @(endorsements)
     };
+    c.imageUrl = url;
     return c;
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"<Card>Name: %@\nProperties: %@",_contactName,_properties];
+    return [NSString stringWithFormat:@"<Card>Name: %@\nImage: %@\nProperties: %@",_contactName,_imageUrl,_properties];
 }
 
 #pragma mark - NSCoding protocol
@@ -39,12 +41,14 @@
     [coder encodeObject:_properties forKey:kProperties];
     [coder encodeObject:_contactName forKey:kContactName];
     [coder encodeObject:_selectedProperty forKey:kSelectedProperty];
+    [coder encodeObject:_imageUrl forKey:kImageUrl];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
     self.properties = [coder decodeObjectForKey:kProperties];
     self.contactName = [coder decodeObjectForKey:kContactName];
     self.selectedProperty = [coder decodeObjectForKey:kSelectedProperty];
+    self.imageUrl = [coder decodeObjectForKey:kImageUrl];
     return self;
 }
 
