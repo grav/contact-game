@@ -11,6 +11,7 @@
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "CardView.h"
 #import "ReactiveCocoa/UIControl+RACSignalSupport.h"
+#import "CardServiceImpl.h"
 //#import "UIControl+RACSignalSupport.h"
 
 @implementation BoardVC {
@@ -20,7 +21,7 @@
     self = [super init];
     if (self) {
         self.game = game;
-        _cardService = [[StubCardService alloc] init];
+        _cardService = [[CardServiceImpl alloc] init];
     }
 
     return self;

@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     ConnectVC *vc = [[ConnectVC alloc] initWithNibName:@"ViewController" bundle:nil];
     UINavigationController *rootNavigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    rootNavigationController.navigationController.navigationBarHidden = YES;
+    vc.navigationController.navigationBarHidden = YES;
     self.viewController = rootNavigationController;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
