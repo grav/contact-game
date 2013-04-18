@@ -7,10 +7,11 @@
 
 
 #import <Foundation/Foundation.h>
+#import "Game.h"
 
 
 @interface BoardVC : UIViewController
 
-
+@property Game *game;
 
 @end

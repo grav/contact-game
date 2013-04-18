@@ -26,7 +26,7 @@
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"Name: %@\nProperties: %@",_contactName,_properties];
+    return [NSString stringWithFormat:@"<Card>Name: %@\nProperties: %@",_contactName,_properties];
 }
 
 

@@ -17,8 +17,6 @@
     NSString *selectedProperty = self.selectedCard.selectedProperty?self.selectedCard.selectedProperty:self.receivedCard.selectedProperty;
     Result result = [Game compareOwnCard:self.selectedCard withOtherCard:self.receivedCard consideringProperty:selectedProperty];
     self.score += [Game scoreFromResult:result];
-    self.receivedCard = nil;
-    self.selectedCard = nil;
 }
 
 - (void)didSelectCard:(Card *)card
@@ -35,6 +33,7 @@
 
 - (void)didReceiveCard:(Card *)card {
     NSCAssert(!self.receivedCard,@"A card has already been received!");
+    self.receivedCard = card;
     if(self.selectedCard){
         [self determineScore];
     }
@@ -44,9 +43,11 @@
 
 #pragma mark - Util
 + (Result)compareOwnCard:(Card*)own withOtherCard:(Card *)other consideringProperty:(NSString *)property {
-    if([own.properties objectForKey:property] > [other.properties objectForKey:property]){
+    int ownVal = [[own.properties objectForKey:property] intValue];
+    int otherVal = [[other.properties objectForKey:property] intValue];
+    if(ownVal > otherVal){
         return ResultVictory;
-    } else if ([own.properties objectForKey:property] < [other.properties objectForKey:property]){
+    } else if (otherVal < ownVal){
         return ResultLoss;
     } else {
         return ResultTie;

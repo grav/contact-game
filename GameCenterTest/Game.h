@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
+#import "ReactiveCocoa/ReactiveCocoa.h"
 
 typedef enum {
     ResultVictory,
