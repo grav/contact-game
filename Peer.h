@@ -18,5 +18,4 @@
 @property (nonatomic,copy,readonly) NSString *stateString;
 - (id)initWithSession:(GKSession*)s peerID:(NSString*)pId;
 
-
 @end
