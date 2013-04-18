@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19C990AE444C291E41F98A32 /* LinkedInPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C991BCB5B58D55A65B1B5C /* LinkedInPerson.m */; };
+		19C990D0C59A33C836162AE1 /* LIGLinkedInService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C995E4D394C469C6CA3EB1 /* LIGLinkedInService.m */; };
+		19C997DA40ED9C3189210F14 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 19C99EECBF9ED3C17E056A51 /* .gitignore */; };
+		19C999F8422D71978B542FE6 /* LIGLinkedInAuthentiationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C990C55DB45DF4F0E16FDB /* LIGLinkedInAuthentiationViewController.m */; };
 		308A6226DD4AEA4B0CA5BF2A /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A62EAE2E8725534566342 /* CardView.m */; };
 		308A642CD56E0F558CB6F1F2 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6DB23408A8A40106A431 /* Card.m */; };
 		308A64F415BAB3B1D2996DC2 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* Game.m */; };
@@ -74,6 +78,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19C9900E85DEE153A9A66616 /* LIGLinkedInAuthentiationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGLinkedInAuthentiationViewController.h; sourceTree = "<group>"; };
+		19C990C55DB45DF4F0E16FDB /* LIGLinkedInAuthentiationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGLinkedInAuthentiationViewController.m; sourceTree = "<group>"; };
+		19C99152E46BBAECF23CC437 /* LIGLinkedInService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGLinkedInService.h; sourceTree = "<group>"; };
+		19C991BCB5B58D55A65B1B5C /* LinkedInPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedInPerson.m; sourceTree = "<group>"; };
+		19C99356AC308479195CF4B1 /* LinkedInCredentails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInCredentails.h; sourceTree = "<group>"; };
+		19C995E4D394C469C6CA3EB1 /* LIGLinkedInService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGLinkedInService.m; sourceTree = "<group>"; };
+		19C99EECBF9ED3C17E056A51 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
+		19C99F465832BDCE6E5F5277 /* LinkedInPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInPerson.h; sourceTree = "<group>"; };
 		308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = External/ReativeCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
 		308A62EAE2E8725534566342 /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		308A64D9205A7F1E37F21E25 /* CardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardService.m; sourceTree = "<group>"; };
@@ -140,6 +152,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19C997F5BE619436DD69F76B /* linkedin */ = {
+			isa = PBXGroup;
+			children = (
+				19C99EECBF9ED3C17E056A51 /* .gitignore */,
+				19C9900E85DEE153A9A66616 /* LIGLinkedInAuthentiationViewController.h */,
+				19C990C55DB45DF4F0E16FDB /* LIGLinkedInAuthentiationViewController.m */,
+				19C99152E46BBAECF23CC437 /* LIGLinkedInService.h */,
+				19C995E4D394C469C6CA3EB1 /* LIGLinkedInService.m */,
+				19C99356AC308479195CF4B1 /* LinkedInCredentails.h */,
+				19C99F465832BDCE6E5F5277 /* LinkedInPerson.h */,
+				19C991BCB5B58D55A65B1B5C /* LinkedInPerson.m */,
+			);
+			path = linkedin;
+			sourceTree = "<group>";
+		};
 		308A630E958AF5FC3B68FC60 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +242,7 @@
 				308A6AA364B2C1CCBC068AF7 /* BoardVC.h */,
 				308A62EAE2E8725534566342 /* CardView.m */,
 				308A6BBC68D0AD7B623A7938 /* CardView.h */,
+				19C997F5BE619436DD69F76B /* linkedin */,
 			);
 			path = GameCenterTest;
 			sourceTree = "<group>";
@@ -354,6 +382,7 @@
 				AE76739E15AF04890045843E /* InfoPlist.strings in Resources */,
 				AE7673AA15AF04890045843E /* ViewController.xib in Resources */,
 				AE1AB37817201A6A00851433 /* Default-568h@2x.png in Resources */,
+				19C997DA40ED9C3189210F14 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +427,9 @@
 				308A6D6397C86E0243B4B510 /* Game.m in Sources */,
 				308A6BCC7D85C842D79BA09D /* BoardVC.m in Sources */,
 				308A6226DD4AEA4B0CA5BF2A /* CardView.m in Sources */,
+				19C999F8422D71978B542FE6 /* LIGLinkedInAuthentiationViewController.m in Sources */,
+				19C990D0C59A33C836162AE1 /* LIGLinkedInService.m in Sources */,
+				19C990AE444C291E41F98A32 /* LinkedInPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
