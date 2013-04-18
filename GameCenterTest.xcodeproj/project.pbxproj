@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		308A6226DD4AEA4B0CA5BF2A /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A62EAE2E8725534566342 /* CardView.m */; };
 		308A642CD56E0F558CB6F1F2 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6DB23408A8A40106A431 /* Card.m */; };
 		308A64F415BAB3B1D2996DC2 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6E73B35803B96390E818 /* Game.m */; };
 		308A65123DCF4EBF9ADDBA7D /* BoardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A68B342F59E71BB7E286A /* BoardVC.m */; };
@@ -74,12 +75,14 @@
 
 /* Begin PBXFileReference section */
 		308A612512DA601475774A46 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = External/ReativeCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		308A62EAE2E8725534566342 /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		308A64D9205A7F1E37F21E25 /* CardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardService.m; sourceTree = "<group>"; };
 		308A66DE5C1C6C03516311A7 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		308A68B342F59E71BB7E286A /* BoardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardVC.m; sourceTree = "<group>"; };
 		308A6AA364B2C1CCBC068AF7 /* BoardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardVC.h; sourceTree = "<group>"; };
 		308A6ACBA7B14B237C24DA20 /* CardService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardService.h; sourceTree = "<group>"; };
 		308A6B64E0B07E3677620398 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		308A6BBC68D0AD7B623A7938 /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
 		308A6DB23408A8A40106A431 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
 		308A6E73B35803B96390E818 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				308A66DE5C1C6C03516311A7 /* Game.h */,
 				308A68B342F59E71BB7E286A /* BoardVC.m */,
 				308A6AA364B2C1CCBC068AF7 /* BoardVC.h */,
+				308A62EAE2E8725534566342 /* CardView.m */,
+				308A6BBC68D0AD7B623A7938 /* CardView.h */,
 			);
 			path = GameCenterTest;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				308A6BB7BF809AD64819A7FD /* NSArray+Functional.m in Sources */,
 				308A6D6397C86E0243B4B510 /* Game.m in Sources */,
 				308A6BCC7D85C842D79BA09D /* BoardVC.m in Sources */,
+				308A6226DD4AEA4B0CA5BF2A /* CardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
