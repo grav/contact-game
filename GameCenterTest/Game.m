@@ -59,9 +59,15 @@
 {
     int score = 0;
     switch (result){
-        case ResultTie: score = 1;
-        case ResultLoss: score = 0;
-        case ResultVictory: score = 2;
+        case ResultTie:
+            score = 1;
+            break;
+        case ResultLoss:
+            score = 0;
+            break;
+        case ResultVictory:
+            score = 2;
+            break;
     }
     return score;
 }
