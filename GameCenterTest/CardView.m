@@ -6,6 +6,7 @@
 //
 
 
+#import <CoreGraphics/CoreGraphics.h>
 #import "CardView.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 
@@ -24,18 +25,26 @@
         UIView *subView = [[UIView alloc] initWithFrame:subFrame];
         subView.backgroundColor = [UIColor yellowColor];
         [self addSubview:subView];
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0,0,subFrame.size.width,40)];
+        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0,0,subFrame.size.width,20)];
         l.backgroundColor = [UIColor clearColor];
         [subView addSubview:l];
         l.textAlignment = NSTextAlignmentCenter;
         l.font = [UIFont systemFontOfSize:11];
-        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50,subFrame.size.width, subFrame.size.height-50)];
+        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20,subFrame.size.width, subFrame.size.height-50)];
         [subView addSubview:iv];
+
+        UILabel *cl = [[UILabel alloc] initWithFrame:CGRectMake(0, subFrame.size.height-40, subFrame.size.width, 40)];
+        cl.textAlignment = NSTextAlignmentCenter;
+        cl.font = [UIFont systemFontOfSize:11];
+        cl.backgroundColor = [UIColor clearColor];
+        [subView addSubview:cl];
 
         [RACAble(self.card) subscribeNext:^(Card *c) {
             l.text = c.contactName;
             NSData *d = [NSData dataWithContentsOfURL:[NSURL URLWithString:c.imageUrl]];
             iv.image = [[UIImage alloc] initWithData:d];
+            NSNumber *count = [c.properties objectForKey:c.selectedProperty];
+            cl.text = c ? [NSString stringWithFormat:@"Connections: %@",count] : @"";
         }];
     }
 

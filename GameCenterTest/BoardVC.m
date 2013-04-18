@@ -59,7 +59,7 @@
             self.game.selectedCard = nil;
         }
         [_cardService newCardWithCompletion:^(Card *card) {
-            card.selectedProperty = @"endorsements";
+            card.selectedProperty = @"connections";
             [self.game didSelectCard:card];
         }];
     }];

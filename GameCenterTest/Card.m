@@ -28,7 +28,6 @@
     c.properties = @{
         @"connections": @(connections),
         @"headline": @(headline.length),
-        @"endorsements": @(endorsements)
     };
     c.imageUrl = url;
     return c;
