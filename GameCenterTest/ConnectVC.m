@@ -26,18 +26,24 @@ static NSString *kSessionId = @"MySession";
 static NSTimeInterval kConnectionTimeout = 10;
 static NSString *kCellId = @"PeerTableCell";
 
-@implementation ConnectVC
+@implementation ConnectVC {
+    
+    __weak IBOutlet UILabel *displayStatusLabel;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.peers = [NSMutableDictionary dictionary];
 
+    displayStatusLabel.text = @"Initializing...";
+
     [[LinkedInService singleton] getUser:^(LinkedInPerson *user) {
-        self.displayNameTextField.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+        displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+        [self preparedGame];
     }                         andFailure:^(NSString *errorMessage) {
         NSLog(@"Error %@", errorMessage);
-        self.displayNameTextField.text = errorMessage;
+        displayStatusLabel.text = errorMessage;
     }];
 }
 
@@ -52,8 +58,8 @@ static NSString *kCellId = @"PeerTableCell";
 }
 
 - (void)viewDidUnload {
-    [self setDisplayNameTextField:nil];
     [self setTable:nil];
+    displayStatusLabel = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -62,13 +68,10 @@ static NSString *kCellId = @"PeerTableCell";
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)didTapInit:(UIButton *)sender {
-    self.session = [[GKSession alloc] initWithSessionID:kSessionId displayName:self.displayNameTextField.text sessionMode:GKSessionModePeer];
+- (void)preparedGame {
+    self.session = [[GKSession alloc] initWithSessionID:kSessionId displayName:displayStatusLabel.text sessionMode:GKSessionModePeer];
     self.session.delegate = self;
-    self.displayNameTextField.enabled = NO;
     self.session.available = YES;
-    [sender setTitle:@"Init'ed..." forState:UIControlStateNormal];
-    sender.enabled = NO;
     [self.session setDataReceiveHandler:self withContext:nil];
 }
 

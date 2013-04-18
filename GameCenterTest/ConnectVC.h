@@ -11,6 +11,5 @@
 #import <GameKit/GameKit.h>
 
 @interface ConnectVC : UIViewController<GKSessionDelegate,UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *displayNameTextField;
 
 @end
