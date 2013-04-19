@@ -78,7 +78,7 @@ int currentMonth;
                 NSNumber *month = [[[[[person objectForKey:@"positions"] objectForKey:@"values"] objectAtIndex:0] objectForKey:@"startDate"] objectForKey:@"month"];
                 int monthOfEmployment = 0;
                 if (year != nil) {
-                    monthOfEmployment =  currentMonth - [month intValue] + (12 * year.intValue);
+                    monthOfEmployment =  currentMonth - ([month intValue] + (12 * year.intValue));
                 }
 
                 LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"] monthOfEmployment:[NSNumber numberWithInt:monthOfEmployment]];
