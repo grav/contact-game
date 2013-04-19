@@ -40,7 +40,8 @@
         cl.backgroundColor = [UIColor clearColor];
         [subView addSubview:cl];
 
-        [RACAble(self.card) subscribeNext:^(Card *c) {
+        [RACAbleWithStart(self.card) subscribeNext:^(Card *c) {
+            self.hidden = c == nil;
             l.text = c.contactName;
             [iv setImageWithURL:[NSURL URLWithString:c.imageUrl]];
             NSNumber *count = [c.properties objectForKey:c.selectedProperty];

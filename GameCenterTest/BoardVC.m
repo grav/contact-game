@@ -59,7 +59,9 @@
             self.game.selectedCard = nil;
         }
         [_cardService newCardWithCompletion:^(Card *card) {
-            card.selectedProperty = @"connections";
+            [self performSelector:@selector(selectPropertyOnCard:) withObject:card afterDelay:2];
+
+            [self selectPropertyOnCard:card];
             [self.game didSelectCard:card];
         }];
     }];
@@ -88,8 +90,9 @@
         NSLog(@"Received: \n%@",c);
         received.card = c;
     }];
+}
 
-
-
+- (void)selectPropertyOnCard:(Card *)card {
+    self.game.selectedCard = [card selectProperty:@"connections"];
 }
 @end
