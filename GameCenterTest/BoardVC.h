@@ -10,6 +10,11 @@
 #import "Game.h"
 #import "ConnectVC.h"
 
+static CGFloat const CARDVIEW_WIDTH = 150;
+static CGFloat const CARDVIEW_WIDTH_LARGE = 200;
+
+static CGFloat const CARDVIEW_HEIGHT = 200;
+
 @interface BoardVC : UIViewController
 
 @property (nonatomic, strong) Game *game;
