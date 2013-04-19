@@ -25,8 +25,6 @@ typedef enum {
 
 - (void)determineScore;
 
-- (void)didSelectCard:(Card*)card;
-
 - (void)didReceiveCard:(Card*)card;
 
 + (Result)compareOwnCard:(Card*)own withOtherCard:(Card *)other consideringProperty:(NSString *)property;

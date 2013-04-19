@@ -194,9 +194,10 @@ connectionWithPeerFailed:(NSString *)peerID
     UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
     [self presentModalViewController:vc animated:YES];
     [RACAble(self.game.selectedCard) subscribeNext:^(Card *c) {
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:c];
-        [self.session sendData:data toPeers:@[self.connectedPeer.peerID] withDataMode:GKSendDataReliable error:NULL];
-
+        if(c.selectedProperty){
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:c];
+            [self.session sendData:data toPeers:@[self.connectedPeer.peerID] withDataMode:GKSendDataReliable error:NULL];
+        }
     }];
 //    [RACAble(game.receivedCard) subscribeNext:^(Card *c) {
 //        NSLog(@"Received: \n%@",c);

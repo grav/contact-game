@@ -18,15 +18,12 @@
     self.score += [Game scoreFromResult:result];
 }
 
-- (void)didSelectCard:(Card *)card {
-    self.selectedCard = card;
-    if (self.receivedCard) {
+- (void)setSelectedCard:(Card *)selectedCard {
+    _selectedCard = selectedCard;
+    if (_selectedCard.selectedProperty && self.receivedCard) {
         [self determineScore];
     }
-
-    // todo - send card to other player
 }
-
 
 - (void)didReceiveCard:(Card *)card {
     NSCAssert(!self.receivedCard, @"A card has already been received!");
