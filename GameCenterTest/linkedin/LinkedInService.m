@@ -155,12 +155,12 @@ int currentMonth;
 
 - (void)showAuthenticateView:(LinkedInAuthenticationViewController *)authentiationViewController {
     UIViewController *rootViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
-    [(UINavigationController *) rootViewController pushViewController:authentiationViewController animated:YES];
+    [rootViewController presentModalViewController:authentiationViewController animated:YES];
 }
 
 - (void)hideAuthenticateView {
     UIViewController *rootViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
-    [(UINavigationController *) rootViewController popViewControllerAnimated:YES];
+    [rootViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)storeAccessToken:(NSString *)accessToken {

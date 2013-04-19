@@ -19,7 +19,6 @@
 }
 
 - (void)didSelectCard:(Card *)card {
-    NSCAssert(!self.selectedCard, @"A card is already selected!");
     self.selectedCard = card;
     if (self.receivedCard) {
         [self determineScore];

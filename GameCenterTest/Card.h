@@ -10,12 +10,18 @@
 
 @interface Card : NSObject <NSCoding>
 @property (nonatomic, strong) NSDictionary *properties;
-@property (nonatomic, strong) NSString *selectedProperty;
+@property (nonatomic, strong, readonly) NSString *selectedProperty;
 @property (nonatomic, strong) NSString *contactName;
 @property (nonatomic, strong) NSString *headline;
 @property (nonatomic, strong) NSString *imageUrl;
 
+- (id)initWithSelectedProperty:(NSString *)selectedProperty;
+
++ (id)objectWithSelectedProperty:(NSString *)selectedProperty;
+
+
 + (Card*)cardWithName:(NSString *)name headline:(NSString *)headline imageUrl:(NSString *)url connections:(NSNumber *)connections monthOfEmployment:(NSNumber *)monthOfEmployment;
+- (Card*)selectProperty:(NSString *)propertyName;
 
 
 

@@ -21,6 +21,20 @@
     NSDictionary *_properties;
 }
 
+- (id)initWithSelectedProperty:(NSString *)selectedProperty {
+    self = [super init];
+    if (self) {
+        _selectedProperty = selectedProperty;
+    }
+
+    return self;
+}
+
++ (id)objectWithSelectedProperty:(NSString *)selectedProperty {
+    return [[Card alloc] initWithSelectedProperty:selectedProperty];
+}
+
+
 + (Card *)cardWithName:(NSString *)name headline:(NSString *)headline imageUrl:(NSString *)url connections:(NSNumber *)connections monthOfEmployment:(NSNumber *)monthOfEmployment {
     Card *c = [[Card alloc] init];
     c.contactName = name;
@@ -33,6 +47,20 @@
     c.imageUrl = url;
     return c;
 }
+
++ (Card *)selectedCard:(NSString *)name headline:(NSString *)headline imageUrl:(NSString *)url properties:(NSDictionary *)properties selectedProperty:(NSString *)selectedProperty {
+    Card *c = [[Card alloc] initWithSelectedProperty:selectedProperty];
+    c.contactName = name;
+    c.headline = headline;
+    c.properties = properties;
+    c.imageUrl = url;
+    return c;
+}
+
+- (Card *)selectProperty:(NSString *)propertyName {
+    return [Card selectedCard:self.contactName headline:self.headline imageUrl:self.imageUrl properties:self.properties selectedProperty:propertyName];
+}
+
 
 - (NSString *)description{
     return [NSString stringWithFormat:@"<Card>Name: %@\nImage: %@\nProperties: %@",_contactName,_imageUrl,_properties];
@@ -52,7 +80,7 @@
     self.properties = [coder decodeObjectForKey:kProperties];
     self.contactName = [coder decodeObjectForKey:kContactName];
     self.headline = [coder decodeObjectForKey:kHeadline];
-    self.selectedProperty = [coder decodeObjectForKey:kSelectedProperty];
+    _selectedProperty = [coder decodeObjectForKey:kSelectedProperty];
     self.imageUrl = [coder decodeObjectForKey:kImageUrl];
     return self;
 }
