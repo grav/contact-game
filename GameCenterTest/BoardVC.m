@@ -86,19 +86,25 @@
         CGFloat scale;
         CGFloat angle;
         CGPoint center;
+        CGFloat animationDuration;
         if (!c.selectedProperty) {
             scale = 1.0;
             angle = 0;
             center = CGPointMake(self.view.center.x, self.view.center.y-50);
+            animationDuration = 0.0;
         } else {
             scale = scaleFactor;
             angle = (CGFloat) (-M_PI_4 / 8.0);
             center = CGPointMake(90, 180);
+            animationDuration = 0.3;
         }
-        CGAffineTransform rotateTransform = CGAffineTransformMakeRotation(angle);
-        CGAffineTransform scaleTransform = CGAffineTransformMakeScale(scale, scale);
-        selectedView.center = center;
-        selectedView.transform = CGAffineTransformConcat(rotateTransform, scaleTransform);
+
+        [UIView animateWithDuration:animationDuration animations:^{
+            CGAffineTransform rotateTransform = CGAffineTransformMakeRotation(angle);
+            CGAffineTransform scaleTransform = CGAffineTransformMakeScale(scale, scale);
+            selectedView.center = center;
+            selectedView.transform = CGAffineTransformConcat(rotateTransform, scaleTransform);
+        }];
     }];
 
     [RACAble(self.game.receivedCard) subscribeNext:^(Card *c) {
