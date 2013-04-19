@@ -41,7 +41,6 @@ static NSString *kCellId = @"PeerTableCell";
     // Do any additional setup after loading the view, typically from a nib.
     self.peers = [NSMutableDictionary dictionary];
     displayStatusLabel.text = @"Initializing...";
-//    self.singlePlayButton.enabled = NO;
 
     [RACAble(self.currentUser) subscribeNext:^(LinkedInPerson *p) {
         displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@ is ready to play", p.firstName, p.lastName];
