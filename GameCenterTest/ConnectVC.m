@@ -27,19 +27,25 @@ static NSTimeInterval kConnectionTimeout = 10;
 static NSString *kCellId = @"PeerTableCell";
 
 @implementation ConnectVC {
-    
+    LinkedInPerson *currentUser;
     __weak IBOutlet UILabel *displayStatusLabel;
 }
+@synthesize currentUser;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.peers = [NSMutableDictionary dictionary];
-
     displayStatusLabel.text = @"Initializing...";
 
+    [RACAble(self.currentUser) subscribeNext:^(LinkedInPerson *p) {
+        displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@ is ready to play", p.firstName, p.lastName];
+    }];
+
     [[LinkedInService singleton] getUser:^(LinkedInPerson *user) {
-        displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+        self.currentUser = user;
+       // displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
         [self preparedGame];
     }                         andFailure:^(NSString *errorMessage) {
         NSLog(@"Error %@", errorMessage);
@@ -69,7 +75,7 @@ static NSString *kCellId = @"PeerTableCell";
 }
 
 - (void)preparedGame {
-    self.session = [[GKSession alloc] initWithSessionID:kSessionId displayName:displayStatusLabel.text sessionMode:GKSessionModePeer];
+    self.session = [[GKSession alloc] initWithSessionID:kSessionId displayName:[NSString stringWithFormat:@"%@ %@", currentUser.firstName, currentUser.lastName] sessionMode:GKSessionModePeer];
     self.session.delegate = self;
     self.session.available = YES;
     [self.session setDataReceiveHandler:self withContext:nil];

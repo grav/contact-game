@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import <GameKit/GameKit.h>
+#import "LinkedInPerson.h"
 
 @interface ConnectVC : UIViewController<GKSessionDelegate,UITableViewDataSource,UITableViewDelegate>
+@property(nonatomic, strong) LinkedInPerson *currentUser;
+
 
 @end
