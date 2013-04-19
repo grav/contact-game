@@ -21,8 +21,9 @@ typedef enum {
 @interface Game : NSObject
 @property int score;
 @property (nonatomic, strong) Card *selectedCard,*receivedCard;
-@property (nonatomic) BOOL willSelectProperty;
+@property (nonatomic, readonly) BOOL willSelectProperty;
 
 + (Result)compareOwnCard:(Card*)own withOtherCard:(Card *)other consideringProperty:(NSString *)property;
+- (id)initAsPropertySelector:(BOOL)willSelectProperty;
 
 @end
