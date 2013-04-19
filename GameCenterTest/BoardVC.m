@@ -59,8 +59,6 @@
         }
         [_cardService newCardWithCompletion:^(Card *card) {
             [self performSelector:@selector(selectPropertyOnCard:) withObject:card afterDelay:2];
-
-            [self selectPropertyOnCard:card];
             [self.game didSelectCard:card];
         }];
     }];

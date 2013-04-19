@@ -19,6 +19,7 @@
 @property(nonatomic, strong) GKSession *session;
 @property(nonatomic, strong) NSMutableDictionary *peers;
 @property(weak, nonatomic) IBOutlet UITableView *table;
+@property(weak, nonatomic) IBOutlet UIButton *singlePlayButton;
 @property(nonatomic, strong) AVPlayer *player;
 @property(nonatomic, strong) Peer *connectedPeer;
 @property(nonatomic, strong) Game *game;
@@ -40,14 +41,15 @@ static NSString *kCellId = @"PeerTableCell";
     // Do any additional setup after loading the view, typically from a nib.
     self.peers = [NSMutableDictionary dictionary];
     displayStatusLabel.text = @"Initializing...";
+//    self.singlePlayButton.enabled = NO;
 
     [RACAble(self.currentUser) subscribeNext:^(LinkedInPerson *p) {
         displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@ is ready to play", p.firstName, p.lastName];
+        self.singlePlayButton.enabled = YES;
     }];
 
     [[LinkedInService singleton] getUser:^(LinkedInPerson *user) {
         self.currentUser = user;
-       // displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
         [self preparedGame];
     }                         andFailure:^(NSString *errorMessage) {
         NSLog(@"Error %@", errorMessage);
@@ -174,7 +176,7 @@ connectionWithPeerFailed:(NSString *)peerID
     UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
     id<CardService> s = [[StubCardService alloc] init];
     [RACAble(self.game.selectedCard) subscribeNext:^(Card *own) {
-        if(own){
+        if(own && own.selectedProperty){
             [s newCardWithCompletion:^(Card *card) {
                 self.game.receivedCard = card;
             }];
