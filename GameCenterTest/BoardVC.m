@@ -119,14 +119,15 @@
         }];
     }];
 
-    [RACAble(self.game.receivedCard) subscribeNext:^(Card *c) {
+    [[RACAble(self.game.receivedCard) filter:^BOOL(Card *c) {
+        return c!=nil;
+    }] subscribeNext:^(Card *c) {
         NSLog(@"Received: \n%@", c);
         received.card = c;
         if(!self.game.willSelectProperty){
             NSCAssert(c.selectedProperty,@"%@",c);
             self.game.selectedCard = [self.game.selectedCard selectProperty:c.selectedProperty];
         }
-
     }];
 }
 @end
