@@ -63,8 +63,8 @@
             if(self.game.willSelectProperty){
                 NSArray *properties = [card.properties allKeys];
                 int index = rand() % properties.count;
-                [card selectProperty:[properties objectAtIndex:(NSUInteger) index]];
-                [self.game performSelector:@selector(setSelectedCard:) withObject:card afterDelay:2];
+                Card *cardWithSelection = [card selectProperty:[properties objectAtIndex:(NSUInteger) index]];
+                [self.game performSelector:@selector(setSelectedCard:) withObject:cardWithSelection afterDelay:2];
             }
 
         }];
@@ -85,6 +85,15 @@
     CGFloat scaleFactor = CARDVIEW_WIDTH / CARDVIEW_WIDTH_LARGE;
     CardView *selectedView = [[CardView alloc] initWithFrame:CGRectMake(15, 50, CARDVIEW_WIDTH_LARGE, CARDVIEW_HEIGHT*(1.0/scaleFactor))];
     [self.view addSubview:selectedView];
+
+    [[RACAble(self.game.selectedCard) filter:^BOOL(Card *own) {
+        return !self.game.willSelectProperty && !own.selectedProperty;
+    }] subscribeNext:^(NSNumber *shouldSetSelected) {
+        if([shouldSetSelected boolValue]){
+            self.game.selectedCard = [self.game.selectedCard selectProperty:self.game.receivedCard.selectedProperty];
+        }
+    }];
+
     [RACAble(self.game.selectedCard) subscribeNext:^(Card *c) {
         NSLog(@"Selected: \n%@", c);
         selectedView.card = c;
