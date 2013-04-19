@@ -12,29 +12,28 @@
 
 }
 
-- (void)determineScore {
-    NSString *selectedProperty = self.selectedCard.selectedProperty ? self.selectedCard.selectedProperty : self.receivedCard.selectedProperty;
-    Result result = [Game compareOwnCard:self.selectedCard withOtherCard:self.receivedCard consideringProperty:selectedProperty];
-    self.score += [Game scoreFromResult:result];
-}
+- (id)init {
+    self = [super init];
+    if (self) {
+        [[[RACSignal combineLatest:@[RACAble(self.selectedCard), RACAble(self.receivedCard)]] filter:^BOOL(RACTuple *tuple) {
+            Card *own = tuple.first;
+            return own && tuple.second && own.selectedProperty;
+        }] subscribeNext:^(RACTuple *tuple) {
+            NSLog(@"first: %@\nsecond: %@", tuple.first, tuple.second);
+            Card *own = tuple.first;
+            Card *other = tuple.second;
+            Result result = [Game compareOwnCard:own
+                                   withOtherCard:other
+                             consideringProperty:own.selectedProperty];
+            self.score += [Game scoreFromResult:result];
 
-- (void)didSelectCard:(Card *)card {
-    self.selectedCard = card;
-    if (self.receivedCard) {
-        [self determineScore];
+        }];
     }
 
-    // todo - send card to other player
+    return self;
 }
 
 
-- (void)didReceiveCard:(Card *)card {
-    NSCAssert(!self.receivedCard, @"A card has already been received!");
-    self.receivedCard = card;
-    if (self.selectedCard) {
-        [self determineScore];
-    }
-}
 
 
 

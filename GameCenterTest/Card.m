@@ -63,7 +63,7 @@
 
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"<Card>Name: %@\nImage: %@\nProperties: %@",_contactName,_imageUrl,_properties];
+    return [NSString stringWithFormat:@"<Card>Name: %@\nImage: %@\nProperties: %@\nSelected: %@",_contactName,_imageUrl,_properties,_selectedProperty];
 }
 
 #pragma mark - NSCoding protocol

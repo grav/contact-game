@@ -58,8 +58,9 @@
             self.game.selectedCard = nil;
         }
         [_cardService newCardWithCompletion:^(Card *card) {
+            self.game.selectedCard = card;
             [self performSelector:@selector(selectPropertyOnCard:) withObject:card afterDelay:2];
-            [self.game didSelectCard:card];
+
         }];
     }];
 
