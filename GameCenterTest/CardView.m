@@ -45,7 +45,7 @@
             l.text = c.contactName;
             [iv setImageWithURL:[NSURL URLWithString:c.imageUrl]];
             NSNumber *count = [c.properties objectForKey:c.selectedProperty];
-            cl.text = c ? [NSString stringWithFormat:@"Connections: %@",count] : @"";
+            cl.text = (c && c.selectedProperty) ? [NSString stringWithFormat:@"%@: %@",c.selectedProperty,count] : @"";
         }];
     }
 

@@ -23,10 +23,6 @@ typedef enum {
 @property (nonatomic, strong) Card *selectedCard,*receivedCard;
 @property (nonatomic) BOOL willSelectProperty;
 
-- (void)determineScore;
-
-- (void)didReceiveCard:(Card*)card;
-
 + (Result)compareOwnCard:(Card*)own withOtherCard:(Card *)other consideringProperty:(NSString *)property;
 
 @end
