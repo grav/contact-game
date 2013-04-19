@@ -23,6 +23,11 @@
     return self;
 }
 
+- (void)getUser:(void (^)(LinkedInPerson *))completion {
+    LinkedInPerson *p = [[LinkedInPerson alloc] initWithId:nil firstName:@"Hugo" lastName:@"Hansen" pictureURL:nil headline:nil connections:nil monthOfEmployment:nil];
+    completion(p);
+}
+
 
 #pragma mark - Class methods
 

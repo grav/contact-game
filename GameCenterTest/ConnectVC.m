@@ -48,12 +48,11 @@ static NSString *kCellId = @"PeerTableCell";
         self.singlePlayButton.enabled = YES;
     }];
 
-    [[LinkedInService singleton] getUser:^(LinkedInPerson *user) {
+    id<CardService>service = [[StubCardService alloc] init];
+
+    [service getUser:^(LinkedInPerson *user) {
         self.currentUser = user;
         [self preparedGame];
-    }                         andFailure:^(NSString *errorMessage) {
-        NSLog(@"Error %@", errorMessage);
-        displayStatusLabel.text = errorMessage;
     }];
 }
 

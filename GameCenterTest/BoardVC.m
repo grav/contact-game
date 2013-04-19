@@ -20,7 +20,7 @@
     self = [super init];
     if (self) {
         self.game = game;
-        _cardService = [[CardServiceImpl alloc] init];
+        _cardService = [[StubCardService alloc] init];
     }
 
     return self;

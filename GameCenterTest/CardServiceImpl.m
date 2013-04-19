@@ -21,5 +21,14 @@
     }];
 }
 
+- (void)getUser:(void (^)(LinkedInPerson *))completion {
+    [[LinkedInService singleton] getUser:^(LinkedInPerson *person) {
+        completion(person);
+    } andFailure:^(NSString *string) {
+        NSLog(@"Error %@",string);
+    }];
+
+}
+
 
 @end

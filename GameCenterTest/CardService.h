@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
+#import "LinkedInPerson.h"
 
 @protocol CardService <NSObject>
 - (void)newCardWithCompletion:(void (^)(Card *))completion;
+- (void)getUser:(void (^)(LinkedInPerson *))completion;
 @end
