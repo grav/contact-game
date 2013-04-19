@@ -26,7 +26,6 @@
                                    withOtherCard:other
                              consideringProperty:[self getDeteriminingCard].selectedProperty];
             self.score += [Game scoreFromResult:result];
-
         }];
     }
 

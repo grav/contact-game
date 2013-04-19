@@ -202,11 +202,6 @@ connectionWithPeerFailed:(NSString *)peerID
             [self.session sendData:data toPeers:@[self.connectedPeer.peerID] withDataMode:GKSendDataReliable error:NULL];
         }
     }];
-//    [RACAble(game.receivedCard) subscribeNext:^(Card *c) {
-//        NSLog(@"Received: \n%@",c);
-////        received.card = c;
-//    }];
-
 }
 
 @end
