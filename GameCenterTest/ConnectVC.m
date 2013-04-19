@@ -12,6 +12,8 @@
 #import <AVFoundation/AVPlayer.h>
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "LinkedInService.h"
+#import "CardService.h"
+#import "StubCardService.h"
 
 @interface ConnectVC ()
 @property(nonatomic, strong) GKSession *session;
@@ -160,6 +162,23 @@ connectionWithPeerFailed:(NSString *)peerID
     self.game.receivedCard = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
+- (IBAction)singlePlay:(id)sender
+{
+    self.game = [[Game alloc] init];
+    UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
+    id<CardService> s = [[StubCardService alloc] init];
+    [RACAble(self.game.selectedCard) subscribeNext:^(Card *own) {
+        if(own){
+            [s newCardWithCompletion:^(Card *card) {
+                self.game.receivedCard = card;
+            }];
+        }
+    }];
+
+
+    [self presentModalViewController:vc animated:YES];
+
+}
 
 #pragma mark - Helper
 - (void) showBoard
