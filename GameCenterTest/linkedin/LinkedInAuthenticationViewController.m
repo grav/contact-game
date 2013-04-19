@@ -68,13 +68,13 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSLog(@"About to load request: %@", [[request URL] absoluteString]);
     NSString *url = [[request URL] absoluteString];
-    NSString *prefix = @"http://www.trifork.com/?code=";
     NSString *suffix = @"&state=foobar";
-    if ([url hasPrefix:prefix]) {
+    if ([url hasPrefix:@"http://www.trifork.com/"]) {
         NSLog(@"found prefix");
         if ([url rangeOfString:@"error"].location != NSNotFound) {
             _failureCallback(@"Access denied"); //todo: extract access denied reason from url
         } else {
+            NSString *prefix = @"http://www.trifork.com/?code=";
             NSString *authorizationCode = [url substringWithRange:NSMakeRange([prefix length], [url length] - [prefix length] - [suffix length])];
             _successCallback(authorizationCode);
         }
