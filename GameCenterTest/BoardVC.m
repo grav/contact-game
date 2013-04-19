@@ -59,7 +59,13 @@
         }
         [_cardService newCardWithCompletion:^(Card *card) {
             self.game.selectedCard = card;
-            [self performSelector:@selector(selectPropertyOnCard:) withObject:card afterDelay:2];
+
+            if(self.game.willSelectProperty){
+                NSArray *properties = [card.properties allKeys];
+                int index = rand() % properties.count;
+                [card selectProperty:[properties objectAtIndex:(NSUInteger) index]];
+                [self.game performSelector:@selector(setSelectedCard:) withObject:card afterDelay:2];
+            }
 
         }];
     }];
@@ -109,10 +115,11 @@
     [RACAble(self.game.receivedCard) subscribeNext:^(Card *c) {
         NSLog(@"Received: \n%@", c);
         received.card = c;
-    }];
-}
+        if(!self.game.willSelectProperty){
+            NSCAssert(c.selectedProperty,@"%@",c);
+            self.game.selectedCard = [self.game.selectedCard selectProperty:c.selectedProperty];
+        }
 
-- (void)selectPropertyOnCard:(Card *)card {
-    self.game.selectedCard = [card selectProperty:@"connections"];
+    }];
 }
 @end

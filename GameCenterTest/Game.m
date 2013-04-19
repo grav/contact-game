@@ -12,21 +12,20 @@
 
 }
 
-- (id)init {
+- (id)initAsPropertySelector:(BOOL)willSelectProperty{
     self = [super init];
     if (self) {
+        _willSelectProperty = willSelectProperty;
         [[[RACSignal combineLatest:@[RACAble(self.selectedCard), RACAble(self.receivedCard)]] filter:^BOOL(RACTuple *tuple) {
-            Card *own = tuple.first;
-            return own && tuple.second && own.selectedProperty;
+            return tuple.first && tuple.second && [self getDeteriminingCard].selectedProperty;
         }] subscribeNext:^(RACTuple *tuple) {
             NSLog(@"first: %@\nsecond: %@", tuple.first, tuple.second);
             Card *own = tuple.first;
             Card *other = tuple.second;
             Result result = [Game compareOwnCard:own
                                    withOtherCard:other
-                             consideringProperty:own.selectedProperty];
+                             consideringProperty:[self getDeteriminingCard].selectedProperty];
             self.score += [Game scoreFromResult:result];
-
         }];
     }
 
@@ -34,7 +33,10 @@
 }
 
 
-
+- (Card*)getDeteriminingCard
+{
+    return _willSelectProperty?self.selectedCard:self.receivedCard;
+}
 
 
 #pragma mark - Util

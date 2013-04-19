@@ -23,6 +23,7 @@
 @property(nonatomic, strong) AVPlayer *player;
 @property(nonatomic, strong) Peer *connectedPeer;
 @property(nonatomic, strong) Game *game;
+@property (nonatomic) BOOL didInitiateConnection;
 @end
 
 static NSString *kSessionId = @"MySession";
@@ -105,6 +106,7 @@ static NSString *kCellId = @"PeerTableCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Peer *p = [self.peers objectForKey:[[self.peers allKeys] objectAtIndex:indexPath.row]];
+    self.didInitiateConnection = YES;
     [self.session connectToPeer:p.peerID withTimeout:kConnectionTimeout];
 }
 
@@ -125,6 +127,7 @@ connectionWithPeerFailed:(NSString *)peerID
     NSLog(@"didReceiveConnectionRequestFromPeer: %@", peerID);
     self.table.allowsSelection = NO;
     NSError *e = nil;
+    self.didInitiateConnection = NO;
     [self.session acceptConnectionFromPeer:peerID error:&e];
 }
 
@@ -171,7 +174,7 @@ connectionWithPeerFailed:(NSString *)peerID
 
 - (IBAction)singlePlay:(id)sender
 {
-    self.game = [[Game alloc] init];
+    self.game = [[Game alloc] initAsPropertySelector:YES];
     UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
     id<CardService> s = [[StubCardService alloc] init];
     [RACAble(self.game.selectedCard) subscribeNext:^(Card *own) {
@@ -190,7 +193,7 @@ connectionWithPeerFailed:(NSString *)peerID
 #pragma mark - Helper
 - (void) showBoard
 {
-    self.game = [[Game alloc] init];
+    self.game = [[Game alloc] initAsPropertySelector:self.didInitiateConnection];
 
     UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
     [self presentModalViewController:vc animated:YES];
@@ -200,11 +203,6 @@ connectionWithPeerFailed:(NSString *)peerID
             [self.session sendData:data toPeers:@[self.connectedPeer.peerID] withDataMode:GKSendDataReliable error:NULL];
         }
     }];
-//    [RACAble(game.receivedCard) subscribeNext:^(Card *c) {
-//        NSLog(@"Received: \n%@",c);
-////        received.card = c;
-//    }];
-
 }
 
 @end
