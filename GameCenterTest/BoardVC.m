@@ -87,11 +87,9 @@
     [self.view addSubview:selectedView];
 
     [[RACAble(self.game.selectedCard) filter:^BOOL(Card *own) {
-        return !self.game.willSelectProperty && !own.selectedProperty;
-    }] subscribeNext:^(NSNumber *shouldSetSelected) {
-        if([shouldSetSelected boolValue]){
-            self.game.selectedCard = [self.game.selectedCard selectProperty:self.game.receivedCard.selectedProperty];
-        }
+        return !self.game.willSelectProperty && !own.selectedProperty && self.game.receivedCard;
+    }] subscribeNext:^(id x) {
+        self.game.selectedCard = [self.game.selectedCard selectProperty:self.game.receivedCard.selectedProperty];
     }];
 
     [RACAble(self.game.selectedCard) subscribeNext:^(Card *c) {
