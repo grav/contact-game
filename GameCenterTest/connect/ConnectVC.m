@@ -38,6 +38,7 @@ static NSString *kCellId = @"PeerTableCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = NSLocalizedString(@"application.title", @"the title of the application");
     // Do any additional setup after loading the view, typically from a nib.
     self.peers = [NSMutableDictionary dictionary];
     displayStatusLabel.text = @"Initializing...";

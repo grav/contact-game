@@ -21,9 +21,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    ConnectVC *vc = [[ConnectVC alloc] initWithNibName:@"ViewController" bundle:nil];
+    ConnectVC *vc = [[ConnectVC alloc] init];
     UINavigationController *rootNavigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    vc.navigationController.navigationBarHidden = YES;
     self.viewController = rootNavigationController;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
