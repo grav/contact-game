@@ -50,7 +50,7 @@
 		AE7673BC15AF048A0045843E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE7673BA15AF048A0045843E /* InfoPlist.strings */; };
 		AE7673BF15AF048A0045843E /* GameCenterTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7673BE15AF048A0045843E /* GameCenterTestTests.m */; };
 		AE7673C915AF04AC0045843E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7673C815AF04AC0045843E /* GameKit.framework */; };
-		BBE370871722CDF40029BCDF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBE370851722CDF40029BCDF /* Localizable.strings */; };
+		AED29598172318C20047AAFD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AED29596172318C20047AAFD /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,7 +163,7 @@
 		AE7673BD15AF048A0045843E /* GameCenterTestTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameCenterTestTests.h; sourceTree = "<group>"; };
 		AE7673BE15AF048A0045843E /* GameCenterTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameCenterTestTests.m; sourceTree = "<group>"; };
 		AE7673C815AF04AC0045843E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		BBE370861722CDF40029BCDF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = GameCenterTest/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AED29597172318C20047AAFD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = GameCenterTest/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +249,7 @@
 		19C99EA1DD5EF3A14DF89EC2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BBE370851722CDF40029BCDF /* Localizable.strings */,
+				AED29596172318C20047AAFD /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -477,7 +477,7 @@
 				AE7673AA15AF04890045843E /* ConnectVC.xib in Resources */,
 				AE1AB37817201A6A00851433 /* Default-568h@2x.png in Resources */,
 				19C997DA40ED9C3189210F14 /* .gitignore in Resources */,
-				BBE370871722CDF40029BCDF /* Localizable.strings in Resources */,
+				AED29598172318C20047AAFD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,13 +589,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		BBE370851722CDF40029BCDF /* Localizable.strings */ = {
+		AED29596172318C20047AAFD /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BBE370861722CDF40029BCDF /* en */,
+				AED29597172318C20047AAFD /* en */,
 			);
 			name = Localizable.strings;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
