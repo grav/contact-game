@@ -11,7 +11,7 @@
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "CardView.h"
 #import "CardServiceImpl.h"
-//#import "UIControl+RACSignalSupport.h"
+#import <Quartzcore/QuartzCore.h>
 
 @implementation BoardVC {
     id <CardService> _cardService;
@@ -118,6 +118,13 @@
             CGAffineTransform scaleTransform = CGAffineTransformMakeScale(scale, scale);
             selectedView.center = center;
             selectedView.transform = CGAffineTransformConcat(rotateTransform, scaleTransform);
+
+            selectedView.layer.shouldRasterize = YES;
+            //selectedView.layer.rasterizationScale = scale; also blures the text on the card
+            selectedView.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
+            selectedView.clipsToBounds = NO;
+            selectedView.layer.masksToBounds = NO;
+
         }];
     }];
 
