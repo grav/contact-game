@@ -78,9 +78,9 @@
 
     // 320 x 480
 
-    CardView *received = [[CardView alloc] initWithFrame:CGRectMake(320 - 150 - 20, 60, CARDVIEW_WIDTH, CARDVIEW_HEIGHT)];
-    [self.view addSubview:received];
-    received.transform = CGAffineTransformMakeRotation((CGFloat) (M_PI_4/ 7.5));
+    CGRect receivedFrame = CGRectMake(320 - 150 - 20, 60, CARDVIEW_WIDTH, CARDVIEW_HEIGHT);
+    CardView *receivedView = [[CardView alloc] initWithFrame:receivedFrame];
+    [self.view addSubview:receivedView];
 
     CGFloat scaleFactor = CARDVIEW_WIDTH / CARDVIEW_WIDTH_LARGE;
     CardView *selectedView = [[CardView alloc] initWithFrame:CGRectMake(15, 50, CARDVIEW_WIDTH_LARGE, CARDVIEW_HEIGHT*(1.0/scaleFactor))];
@@ -129,11 +129,17 @@
 
     [RACAble(self.game.receivedCard) subscribeNext:^(Card *other) {
         NSLog(@"Received: \n%@", other);
-        received.card = other;
+        receivedView.card = other;
         if(!self.game.willSelectProperty && other){
             NSCAssert(other.selectedProperty,@"No selected property on %@",other);
             self.game.selectedCard = [self.game.selectedCard selectProperty:other.selectedProperty];
         }
+        receivedView.frame = CGRectOffset(receivedFrame, 200, 0);
+        receivedView.transform = CGAffineTransformMakeRotation((CGFloat) M_PI_2);
+        [UIView animateWithDuration:0.3 animations:^{
+            receivedView.transform = CGAffineTransformMakeRotation((CGFloat) (M_PI_4/ 7.5));
+            receivedView.frame = receivedFrame;
+        }];
     }];
 }
 @end
