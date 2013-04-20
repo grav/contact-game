@@ -7,10 +7,9 @@
 
 
 #import "BoardVC.h"
-#import "StubCardService.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "CardView.h"
-#import "CardServiceImpl.h"
+#import "CardServiceFactory.h"
 #import <Quartzcore/QuartzCore.h>
 
 @implementation BoardVC {
@@ -20,7 +19,7 @@
     self = [super init];
     if (self) {
         self.game = game;
-        _cardService = [[StubCardService alloc] init];
+        _cardService = [CardServiceFactory getCardService];
     }
 
     return self;
