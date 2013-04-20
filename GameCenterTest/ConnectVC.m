@@ -168,7 +168,9 @@ connectionWithPeerFailed:(NSString *)peerID
         self.game.receivedCard = nil;
         self.game.selectedCard = nil;
     }
-    self.game.receivedCard = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    Card *card = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSLog(@"Received %@",card);
+    self.game.receivedCard = card;
 }
 
 - (IBAction)singlePlay:(id)sender
@@ -196,9 +198,10 @@ connectionWithPeerFailed:(NSString *)peerID
 
     UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
     [self presentModalViewController:vc animated:YES];
-    [RACAble(self.game.selectedCard) subscribeNext:^(Card *c) {
-        if(c.selectedProperty){
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:c];
+    [RACAble(self.game.selectedCard) subscribeNext:^(Card *own) {
+        if((!self.game.willSelectProperty && self.game.receivedCard.selectedProperty) ||
+                (self.game.willSelectProperty && own.selectedProperty)){
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:own];
             [self.session sendData:data toPeers:@[self.connectedPeer.peerID] withDataMode:GKSendDataReliable error:NULL];
         }
     }];

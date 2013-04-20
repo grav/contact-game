@@ -11,6 +11,9 @@
 @implementation Game {
 
 }
+- (void)setSelectedCard:(Card *)selectedCard {
+    _selectedCard = selectedCard;
+}
 
 - (id)initAsPropertySelector:(BOOL)willSelectProperty{
     self = [super init];

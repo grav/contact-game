@@ -87,7 +87,8 @@
     [self.view addSubview:selectedView];
 
     [[RACAble(self.game.selectedCard) filter:^BOOL(Card *own) {
-        return !self.game.willSelectProperty && !own.selectedProperty && self.game.receivedCard;
+        // we're not receiving nil && we don't select property & we dont yet have a property and we have received a card
+        return own && !self.game.willSelectProperty && !own.selectedProperty && self.game.receivedCard;
     }] subscribeNext:^(id x) {
         self.game.selectedCard = [self.game.selectedCard selectProperty:self.game.receivedCard.selectedProperty];
     }];
@@ -99,7 +100,8 @@
         CGFloat angle;
         CGPoint center;
         CGFloat animationDuration;
-        if (!c.selectedProperty) {
+        if ((!self.game.willSelectProperty && !self.game.receivedCard) ||
+                (self.game.willSelectProperty && !c.selectedProperty)) {
             scale = 1.0;
             angle = 0;
             center = CGPointMake(self.view.center.x, self.view.center.y-50);
@@ -119,12 +121,12 @@
         }];
     }];
 
-    [RACAble(self.game.receivedCard) subscribeNext:^(Card *c) {
-        NSLog(@"Received: \n%@", c);
-        received.card = c;
-        if(c.selectedProperty){
-            self.game.selectedCard = [self.game.selectedCard selectProperty:c.selectedProperty];
-        }
+    [RACAble(self.game.receivedCard) subscribeNext:^(Card *other) {
+        NSLog(@"Received: \n%@", other);
+        received.card = other;
+//        if(other.selectedProperty){
+//            self.game.selectedCard = [self.game.selectedCard selectProperty:other.selectedProperty];
+//        }
     }];
 }
 @end
