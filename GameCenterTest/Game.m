@@ -56,6 +56,10 @@
 
 }
 
+- (void)quit {
+    //implement to do any cleanup of the current game
+}
+
 + (int)scoreFromResult:(Result)result {
     int score = 0;
     switch (result) {

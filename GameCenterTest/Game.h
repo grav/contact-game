@@ -26,4 +26,5 @@ typedef enum {
 + (Result)compareOwnCard:(Card*)own withOtherCard:(Card *)other consideringProperty:(NSString *)property;
 - (id)initAsPropertySelector:(BOOL)willSelectProperty;
 
+- (void)quit;
 @end
