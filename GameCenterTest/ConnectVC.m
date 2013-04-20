@@ -11,6 +11,7 @@
 #import "BoardVC.h"
 #import <AVFoundation/AVPlayer.h>
 #import "ReactiveCocoa/ReactiveCocoa.h"
+#import "LinkedInService.h"
 #import "CardService.h"
 #import "StubCardService.h"
 
@@ -22,7 +23,7 @@
 @property(nonatomic, strong) AVPlayer *player;
 @property(nonatomic, strong) Peer *connectedPeer;
 @property(nonatomic, strong) Game *game;
-@property(nonatomic) BOOL didInitiateConnection;
+@property (nonatomic) BOOL didInitiateConnection;
 @end
 
 static NSString *kSessionId = @"MySession";
@@ -47,7 +48,7 @@ static NSString *kCellId = @"PeerTableCell";
         self.singlePlayButton.enabled = YES;
     }];
 
-    id <CardService> service = [[StubCardService alloc] init];
+    id<CardService>service = [[StubCardService alloc] init];
 
     [service getUser:^(LinkedInPerson *user) {
         self.currentUser = user;
@@ -171,22 +172,24 @@ connectionWithPeerFailed:(NSString *)peerID
 
 - (void)receiveData:(NSData *)data fromPeer:(NSString *)peer inSession:(GKSession *)session context:(void *)context {
     NSCAssert(peer == self.connectedPeer.peerID, @"Peer id %@ and %@ differ", peer, self.connectedPeer.peerID);
-    if (self.game.receivedCard && self.game.selectedCard) {
+    if(self.game.receivedCard && self.game.selectedCard){
         //apparently, opponent started a new game
         self.game.receivedCard = nil;
         self.game.selectedCard = nil;
     }
     Card *card = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSLog(@"Received %@", card);
+    NSCAssert(card,@"Card received is nil? %@",card);
+    NSLog(@"Received %@",card);
     self.game.receivedCard = card;
 }
 
-- (IBAction)singlePlay:(id)sender {
+- (IBAction)singlePlay:(id)sender
+{
     self.game = [[Game alloc] initAsPropertySelector:YES];
     UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
-    id <CardService> s = [[StubCardService alloc] init];
+    id<CardService> s = [[StubCardService alloc] init];
     [RACAble(self.game.selectedCard) subscribeNext:^(Card *own) {
-        if (own && own.selectedProperty) {
+        if(own && own.selectedProperty){
             [s newCardWithCompletion:^(Card *card) {
                 self.game.receivedCard = card;
             }];
@@ -204,9 +207,11 @@ connectionWithPeerFailed:(NSString *)peerID
 
     UIViewController *vc = [[BoardVC alloc] initWithGame:self.game];
     [self presentModalViewController:vc animated:YES];
-    [RACAble(self.game.selectedCard) subscribeNext:^(Card *own) {
-        if ((!self.game.willSelectProperty && self.game.receivedCard.selectedProperty) ||
-                (self.game.willSelectProperty && own.selectedProperty)) {
+    [[RACAble(self.game.selectedCard) filter:^BOOL(Card *own) {
+        return own!=nil;
+    }] subscribeNext:^(Card *own) {
+        if((!self.game.willSelectProperty && self.game.selectedCard.selectedProperty) ||
+                (self.game.willSelectProperty && own.selectedProperty)){
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:own];
             [self.session sendData:data toPeers:@[self.connectedPeer.peerID] withDataMode:GKSendDataReliable error:NULL];
         }

@@ -100,8 +100,7 @@
         CGFloat angle;
         CGPoint center;
         CGFloat animationDuration;
-        if ((!self.game.willSelectProperty && !self.game.receivedCard) ||
-                (self.game.willSelectProperty && !c.selectedProperty)) {
+        if (!c.selectedProperty) {
             scale = 1.0;
             angle = 0;
             center = CGPointMake(self.view.center.x, self.view.center.y-50);
@@ -131,9 +130,10 @@
     [RACAble(self.game.receivedCard) subscribeNext:^(Card *other) {
         NSLog(@"Received: \n%@", other);
         received.card = other;
-//        if(other.selectedProperty){
-//            self.game.selectedCard = [self.game.selectedCard selectProperty:other.selectedProperty];
-//        }
+        if(!self.game.willSelectProperty && other){
+            NSCAssert(other.selectedProperty,@"No selected property on %@",other);
+            self.game.selectedCard = [self.game.selectedCard selectProperty:other.selectedProperty];
+        }
     }];
 }
 @end
