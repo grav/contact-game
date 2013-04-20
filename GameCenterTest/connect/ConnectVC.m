@@ -14,12 +14,14 @@
 #import "CardService.h"
 #import "StubCardService.h"
 #import "CardServiceFactory.h"
+#import "LinkedInService.h"
 
 @interface ConnectVC ()
 @property(nonatomic, strong) GKSession *session;
 @property(nonatomic, strong) NSMutableDictionary *peers;
 @property(weak, nonatomic) IBOutlet UITableView *table;
 @property(weak, nonatomic) IBOutlet UIButton *singlePlayButton;
+@property(weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property(nonatomic, strong) AVPlayer *player;
 @property(nonatomic, strong) Peer *connectedPeer;
 @property(nonatomic, strong) Game *game;
@@ -47,6 +49,7 @@ static NSString *kCellId = @"PeerTableCell";
     [RACAble(self.currentUser) subscribeNext:^(LinkedInPerson *p) {
         displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@ is ready to play", p.firstName, p.lastName];
         self.singlePlayButton.enabled = YES;
+        self.logoutButton.enabled = YES;
     }];
 
     id <CardService> service = [CardServiceFactory getCardService];
@@ -199,6 +202,11 @@ connectionWithPeerFailed:(NSString *)peerID
 
     [self presentModalViewController:vc animated:YES];
 
+}
+
+- (IBAction)logout:(id)sender
+{
+    [[LinkedInService singleton] logout];
 }
 
 #pragma mark - Helper
