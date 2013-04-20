@@ -11,7 +11,6 @@
 #import "BoardVC.h"
 #import <AVFoundation/AVPlayer.h>
 #import "ReactiveCocoa/ReactiveCocoa.h"
-#import "LinkedInService.h"
 #import "CardService.h"
 #import "StubCardService.h"
 
