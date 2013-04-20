@@ -14,9 +14,9 @@
 @interface LinkedInService : AFHTTPClient
 + (LinkedInService *)singleton;
 
-- (void)getUser:(void (^)(LinkedInPerson *))success andFailure:(void (^)(NSString *))failure;
+- (void)getUser:(void (^)(LinkedInPerson *))success andFailure:(void (^)(NSError *))error;
 
-- (void)getLinkedInPerson:(void (^)(LinkedInPerson *))success andFailure:(void (^)(NSString *))failure;
+- (void)getLinkedInPerson:(void (^)(LinkedInPerson *))success andFailure:(void (^)(NSError *))failure;
 
 - (void)logout;
 @end

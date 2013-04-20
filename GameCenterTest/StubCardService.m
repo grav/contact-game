@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void)getUser:(void (^)(LinkedInPerson *))completion {
+- (void)getUser:(void (^)(LinkedInPerson *))completion andFailure:(void (^)(NSError *error)) failure {
     LinkedInPerson *p = [[LinkedInPerson alloc] initWithId:nil firstName:@"Hugo" lastName:@"Hansen" pictureURL:nil headline:nil connections:nil monthOfEmployment:nil];
     completion(p);
 }

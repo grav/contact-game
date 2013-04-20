@@ -2,3 +2,8 @@
   Localizable.strings for english version
 */
 "application.title" = "LinkedDown";
+
+"linkedin.login.cancelled.message.header" = "Login Cancelled";
+"linkedin.login.cancelled.message.description" = "Login was cancelled by you";
+"linkedin.login.failed.message.header" = "Login Failed";
+"linkedin.login.failed.message.description" = "Login failed for unknown reason.";

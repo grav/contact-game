@@ -12,5 +12,5 @@
 
 @protocol CardService <NSObject>
 - (void)newCardWithCompletion:(void (^)(Card *))completion;
-- (void)getUser:(void (^)(LinkedInPerson *))completion;
+- (void)getUser:(void (^)(LinkedInPerson *))completion andFailure: (void (^)(NSError *)) failure;
 @end

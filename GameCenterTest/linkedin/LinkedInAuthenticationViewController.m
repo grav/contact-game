@@ -69,14 +69,15 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSLog(@"About to load request: %@", [[request URL] absoluteString]);
     NSString *url = [[request URL] absoluteString];
-    NSString *suffix = @"&state=foobar";
-    if ([url hasPrefix:@"http://www.trifork.com/"]) {
-        NSLog(@"found prefix");
+    if ([url hasPrefix:LINKEDIN_URL_PREFIX]) {
         if ([url rangeOfString:@"error"].location != NSNotFound) {
-            _failureCallback(@"Access denied"); //todo: extract access denied reason from url
+            BOOL accessDenied = [url rangeOfString:@"the+user+denied+your+request"].location != NSNotFound;
+            NSInteger errorCode = accessDenied ? kLinkedInAuthenticationCancelledByUser : kLinkedInAuthenticationFailed;
+            NSError *error = [[NSError alloc] initWithDomain:kLinkedInErrorDomain code:errorCode userInfo:[[NSMutableDictionary alloc] init]];
+            _failureCallback(error);
         } else {
             NSString *prefix = @"http://www.trifork.com/?code=";
-            NSString *authorizationCode = [url substringWithRange:NSMakeRange([prefix length], [url length] - [prefix length] - [suffix length])];
+            NSString *authorizationCode = [url substringWithRange:NSMakeRange([LINKEDIN_CODE_PREFIX length], [url length] - [LINKEDIN_CODE_PREFIX length] - [LINKEDIN_URL_SUFFIX length])];
             _successCallback(authorizationCode);
         }
         return NO;

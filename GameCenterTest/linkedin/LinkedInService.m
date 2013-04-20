@@ -26,7 +26,7 @@ int currentMonth;
         NSDate *date = [NSDate date];
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:date];
-        currentMonth =  [components month] + 12 * [components year];
+        currentMonth = [components month] + 12 * [components year];
 
     });
     return sharedInstance;
@@ -78,7 +78,7 @@ int currentMonth;
                 NSNumber *month = [[[[[person objectForKey:@"positions"] objectForKey:@"values"] objectAtIndex:0] objectForKey:@"startDate"] objectForKey:@"month"];
                 int monthOfEmployment = 0;
                 if (year != nil) {
-                    monthOfEmployment =  currentMonth - ([month intValue] + (12 * year.intValue));
+                    monthOfEmployment = currentMonth - ([month intValue] + (12 * year.intValue));
                 }
 
                 LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"] monthOfEmployment:[NSNumber numberWithInt:monthOfEmployment]];
@@ -93,7 +93,7 @@ int currentMonth;
     }];
 }
 
-- (void)getUser:(void (^) (LinkedInPerson *person))success andFailure:(void (^) (NSString *errorReason))failure {
+- (void)getUser:(void (^) (LinkedInPerson *person))success andFailure:(void (^) (NSError *error))failure {
     if (user != nil) {
         success(user);
         return;
@@ -114,14 +114,14 @@ int currentMonth;
                             success(linkedInPerson);
                         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             [self hideAuthenticateView];
-                            failure([error description]);
+                            failure(error);
                         }];
                     }         andFailure:^(NSError *authenticateError) {
                         [self hideAuthenticateView];
-                        failure([authenticateError description]);
+                        failure(authenticateError);
                     }];
 
-                }    andFailure:^(NSString *errorReason) {
+                }    andFailure:^(NSError *errorReason) {
                     [self hideAuthenticateView];
                     failure(errorReason);
                 }];
@@ -136,13 +136,13 @@ int currentMonth;
     return [NSString stringWithFormat:@"https://www.linkedin.com/v1/people/~:(id,first-name,last-name,picture-url,headline,positions,num-connections)?oauth2_access_token=%@&format=json", [self getAccessToken]];
 }
 
-- (void)getLinkedInPerson:(void (^) (LinkedInPerson *person))success andFailure:(void (^) (NSString *errorReason))failure {
+- (void)getLinkedInPerson:(void (^) (LinkedInPerson *person))success andFailure:(void (^) (NSError *error))failure {
     if ([linkedInPersons count] == 0) {
         [self getLinkedInPersons:^(NSArray *persons) {
             [linkedInPersons addObjectsFromArray:persons];
             success([self getRandomPerson]);
         }             andFailure:^(NSError *error) {
-            failure([error description]);
+            failure(error);
         }];
     } else {
         success([self getRandomPerson]);

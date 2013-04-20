@@ -4,3 +4,6 @@
 [submodule "External/AFNetworking"]
 	path = External/AFNetworking
 	url = https://github.com/AFNetworking/AFNetworking.git
+[submodule "External/TSMessages"]
+	path = External/TSMessages
+	url = https://github.com/toursprung/TSMessages.git

@@ -7,6 +7,9 @@
 
 #import "CardServiceImpl.h"
 #import "LinkedInService.h"
+#import "LinkedInConstants.h"
+#import "TSMessage.h"
+
 
 
 @implementation CardServiceImpl {
@@ -16,16 +19,18 @@
     [[LinkedInService singleton] getLinkedInPerson:^(LinkedInPerson *person) {
         Card *card = [Card cardWithName:[NSString stringWithFormat:@"%@ %@", person.firstName, person.lastName] headline:person.headline imageUrl:person.pictureURL.absoluteString connections:person.connections monthOfEmployment:person.monthOfEmployment];
         completion(card);
-    }                                   andFailure:^(NSString *error) {
+    }                                   andFailure:^(NSError *error) {
         NSLog(@"Could not get linked in connectio %@", error);
     }];
 }
 
-- (void)getUser:(void (^)(LinkedInPerson *))completion {
+
+
+- (void)getUser:(void (^)(LinkedInPerson *))completion andFailure:(void (^)(NSError *))failure {
     [[LinkedInService singleton] getUser:^(LinkedInPerson *person) {
         completion(person);
-    } andFailure:^(NSString *string) {
-        NSLog(@"Error %@",string);
+    }                         andFailure:^(NSError *error) {
+        failure(error);
     }];
 
 }

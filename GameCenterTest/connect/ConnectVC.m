@@ -15,6 +15,8 @@
 #import "StubCardService.h"
 #import "CardServiceFactory.h"
 #import "LinkedInService.h"
+#import "LinkedInConstants.h"
+#import "TSMessage.h"
 
 @interface ConnectVC ()
 @property(nonatomic, strong) GKSession *session;
@@ -57,6 +59,22 @@ static NSString *kCellId = @"PeerTableCell";
     [service getUser:^(LinkedInPerson *user) {
         self.currentUser = user;
         [self preparedGame];
+    } andFailure: ^(NSError *error) {
+        if ([error.domain isEqualToString:kLinkedInErrorDomain]) {
+            if (error.code == kLinkedInAuthenticationCancelledByUser) {
+                [TSMessage showNotificationInViewController:self
+                                                      withTitle:NSLocalizedString(@"linkedin.login.cancelled.message.header", "Login was cancelled by user message header")
+                                                    withMessage:NSLocalizedString(@"linkedin.login.cancelled.message.description", "Login was cancelled by user message description")
+                                                       withType:TSMessageNotificationTypeWarning];
+            } else {
+                [TSMessage showNotificationInViewController:self
+                                                  withTitle:NSLocalizedString(@"linkedin.login.failed.message.header", "Login failed for unknown reason")
+                                                withMessage:NSLocalizedString(@"linkedin.login.failed.message.description", "Login failed for unknown reason")
+                                                   withType:TSMessageNotificationTypeError];
+            }
+        } else {
+            NSLog(@"Error %@", [error localizedDescription]);
+        }
     }];
 }
 
