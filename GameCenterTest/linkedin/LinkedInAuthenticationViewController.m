@@ -54,7 +54,7 @@
     self.navigationController.navigationBarHidden = YES;
 
 
-    NSString *linkedIn = [NSString stringWithFormat:@"https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=%@&scope=r_fullprofile%20r_network&state=foobar&redirect_uri=http://www.trifork.com", LINKEDIN_CLIENT_ID];
+    NSString *linkedIn = [NSString stringWithFormat:@"https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=%@&scope=r_fullprofile%%20r_network&state=foobar&redirect_uri=http://www.trifork.com", LINKEDIN_CLIENT_ID];
     [authenticationWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:linkedIn]]];
 }
 
