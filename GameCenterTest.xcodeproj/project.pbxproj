@@ -239,6 +239,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19C991741313E68BE16AD421 /* game */ = {
+			isa = PBXGroup;
+			children = (
+				308A66DE5C1C6C03516311A7 /* Game.h */,
+				308A6E73B35803B96390E818 /* Game.m */,
+				308A6AA364B2C1CCBC068AF7 /* BoardVC.h */,
+				308A68B342F59E71BB7E286A /* BoardVC.m */,
+				308A6B64E0B07E3677620398 /* Card.h */,
+				308A6DB23408A8A40106A431 /* Card.m */,
+				308A6BBC68D0AD7B623A7938 /* CardView.h */,
+				308A62EAE2E8725534566342 /* CardView.m */,
+			);
+			path = game;
+			sourceTree = "<group>";
+		};
 		19C991FAB008CD32956C91A6 /* connect */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,16 +380,8 @@
 				AE76739A15AF04890045843E /* Supporting Files */,
 				308A64D9205A7F1E37F21E25 /* StubCardService.m */,
 				308A6ACBA7B14B237C24DA20 /* StubCardService.h */,
-				308A6DB23408A8A40106A431 /* Card.m */,
-				308A6B64E0B07E3677620398 /* Card.h */,
 				308A6EC87F3CB9021333D104 /* NSArray+Functional.h */,
 				308A6E3FD5DA94B29834DF50 /* NSArray+Functional.m */,
-				308A6E73B35803B96390E818 /* Game.m */,
-				308A66DE5C1C6C03516311A7 /* Game.h */,
-				308A68B342F59E71BB7E286A /* BoardVC.m */,
-				308A6AA364B2C1CCBC068AF7 /* BoardVC.h */,
-				308A62EAE2E8725534566342 /* CardView.m */,
-				308A6BBC68D0AD7B623A7938 /* CardView.h */,
 				19C997F5BE619436DD69F76B /* linkedin */,
 				308A669793DBF2023162ABCE /* CardService.h */,
 				19C99B02491766CD37C67562 /* CardServiceImpl.m */,
@@ -383,6 +390,7 @@
 				19C99EA1DD5EF3A14DF89EC2 /* Resources */,
 				19C993D3C167734E976E1A80 /* CardServiceFactory.m */,
 				19C995A974F730ED3FCD93CE /* CardServiceFactory.h */,
+				19C991741313E68BE16AD421 /* game */,
 			);
 			path = GameCenterTest;
 			sourceTree = "<group>";
