@@ -12,7 +12,6 @@
 #import <AVFoundation/AVPlayer.h>
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "CardService.h"
-#import "StubCardService.h"
 #import "CardServiceFactory.h"
 #import "LinkedInService.h"
 #import "LinkedInConstants.h"
@@ -23,11 +22,12 @@
 @property(nonatomic, strong) NSMutableDictionary *peers;
 @property(weak, nonatomic) IBOutlet UITableView *table;
 @property(weak, nonatomic) IBOutlet UIButton *singlePlayButton;
-@property(weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property(weak, nonatomic) IBOutlet UIButton *loginStateButton;
 @property(nonatomic, strong) AVPlayer *player;
 @property(nonatomic, strong) Peer *connectedPeer;
 @property(nonatomic, strong) Game *game;
 @property(nonatomic) BOOL didInitiateConnection;
+
 @end
 
 static NSString *kSessionId = @"MySession";
@@ -36,7 +36,6 @@ static NSString *kCellId = @"PeerTableCell";
 
 @implementation ConnectVC {
     LinkedInPerson *currentUser;
-    __weak IBOutlet UILabel *displayStatusLabel;
 }
 @synthesize currentUser;
 
@@ -46,37 +45,49 @@ static NSString *kCellId = @"PeerTableCell";
     self.title = NSLocalizedString(@"application.title", @"the title of the application");
     // Do any additional setup after loading the view, typically from a nib.
     self.peers = [NSMutableDictionary dictionary];
-    displayStatusLabel.text = @"Initializing...";
 
     [RACAble(self.currentUser) subscribeNext:^(LinkedInPerson *p) {
-        displayStatusLabel.text = [NSString stringWithFormat:@"%@ %@ is ready to play", p.firstName, p.lastName];
-        self.singlePlayButton.enabled = YES;
-        self.logoutButton.enabled = YES;
+        BOOL loggedIn = p != nil;
+        NSString *buttonLabel = loggedIn ? [NSString stringWithFormat:@"%@ %@ (logout)", p.firstName, p.lastName] : @"Login to play";
+        [self.loginStateButton setTitle:buttonLabel forState:UIControlStateNormal];
+        self.singlePlayButton.enabled = loggedIn;
     }];
+    [self loginAndPrepareGame];
+}
 
-    id <CardService> service = [CardServiceFactory getCardService];
-
-    [service getUser:^(LinkedInPerson *user) {
+- (void)loginAndPrepareGame {
+    self.loginStateButton.enabled = NO;
+    [self.loginStateButton setTitle:@"Loggin in..." forState:UIControlStateNormal];
+    [[CardServiceFactory getCardService] getUser:^(LinkedInPerson *user) {
+        self.loginStateButton.enabled = YES;
         self.currentUser = user;
         [self preparedGame];
-    } andFailure: ^(NSError *error) {
+    }     andFailure:^(NSError *error) {
+        self.loginStateButton.enabled = YES;
+        self.currentUser = nil;
         if ([error.domain isEqualToString:kLinkedInErrorDomain]) {
             if (error.code == kLinkedInAuthenticationCancelledByUser) {
                 [TSMessage showNotificationInViewController:self
-                                                      withTitle:NSLocalizedString(@"linkedin.login.cancelled.message.header", "Login was cancelled by user message header")
-                                                    withMessage:NSLocalizedString(@"linkedin.login.cancelled.message.description", "Login was cancelled by user message description")
-                                                       withType:TSMessageNotificationTypeWarning];
+                                                  withTitle:NSLocalizedString(@"linkedin.login.cancelled.message.header", "Login was cancelled by user message header") withMessage:NSLocalizedString(@"linkedin.login.cancelled.message.description", "Login was cancelled by user message description") withType:TSMessageNotificationTypeWarning];
             } else {
                 [TSMessage showNotificationInViewController:self
-                                                  withTitle:NSLocalizedString(@"linkedin.login.failed.message.header", "Login failed for unknown reason")
-                                                withMessage:NSLocalizedString(@"linkedin.login.failed.message.description", "Login failed for unknown reason")
-                                                   withType:TSMessageNotificationTypeError];
+                                                  withTitle:NSLocalizedString(@"linkedin.login.failed.message.header", "Login failed for unknown reason") withMessage:NSLocalizedString(@"linkedin.login.failed.message.description", "Login failed for unknown reason") withType:TSMessageNotificationTypeError];
             }
         } else {
             NSLog(@"Error %@", [error localizedDescription]);
         }
     }];
 }
+
+- (void)logout {
+    [[LinkedInService singleton] logout];
+    self.currentUser = nil;
+    self.session = nil;
+    [self.peers removeAllObjects];
+    [self.table reloadData];
+
+}
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -90,7 +101,7 @@ static NSString *kCellId = @"PeerTableCell";
 
 - (void)viewDidUnload {
     [self setTable:nil];
-    displayStatusLabel = nil;
+    [self setLoginStateButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -165,9 +176,9 @@ connectionWithPeerFailed:(NSString *)peerID
     NSLog(@"peer: %@ didChangeState: %d", p.displayName, p.state);
     switch (p.state) {
         case GKPeerStateAvailable:
-//            [self.session connectToPeer:peerID withTimeout:kConnectionTimeout];
             break;
         case GKPeerStateUnavailable:
+            [self.peers removeObjectForKey:peerID];
             break;
         case GKPeerStateDisconnected:
             [self.peers removeObjectForKey:peerID];
@@ -216,16 +227,19 @@ connectionWithPeerFailed:(NSString *)peerID
             }];
         }
     }];
-
-
     [self presentModalViewController:vc animated:YES];
 
 }
 
-- (IBAction)logout:(id)sender
-{
-    [[LinkedInService singleton] logout];
+- (IBAction)didPressLoginStateButton:(id)sender {
+    NSLog(NSStringFromSelector(_cmd));
+    if (self.currentUser) {
+        [self logout];
+    } else {
+        [self loginAndPrepareGame];
+    }
 }
+
 
 #pragma mark - Helper
 - (void)startGame {
