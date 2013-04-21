@@ -133,11 +133,11 @@
             NSCAssert(other.selectedProperty,@"No selected property on %@",other);
             self.game.selectedCard = [self.game.selectedCard selectProperty:other.selectedProperty];
         }
-        receivedView.frame = CGRectOffset(receivedFrame, 200, 0);
-        receivedView.transform = CGAffineTransformMakeRotation((CGFloat) M_PI_2);
+        CGAffineTransform rotateTransform = CGAffineTransformMakeRotation((CGFloat) M_PI_2);
+        CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(200, 0);
+        receivedView.transform = CGAffineTransformConcat(rotateTransform, moveTransform);
         [UIView animateWithDuration:0.3 animations:^{
             receivedView.transform = CGAffineTransformMakeRotation((CGFloat) (M_PI_4/ 7.5));
-            receivedView.frame = receivedFrame;
         }];
     }];
 }
