@@ -40,9 +40,9 @@
     c.contactName = name;
     c.headline = headline;
     c.properties = @{
-        @"connections": connections,
-        @"headline": @(headline.length),
-        @"monthOfEmployment": monthOfEmployment
+        @"Connections": connections,
+        @"Headline": @(headline.length),
+        @"Months Of Employment": monthOfEmployment
     };
     c.imageUrl = url;
     return c;
