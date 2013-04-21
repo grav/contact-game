@@ -25,16 +25,17 @@
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)loadView {
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     self.view.backgroundColor = [UIColor whiteColor];
-    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 320, 320, 50)];
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 360, 320, 50)];
     l.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:l];
     [RACAble(self.game.score) subscribeNext:^(NSNumber *n) {
         l.text = [NSString stringWithFormat:@"Score: %@", n];
     }];
     self.game.score = 0;
+    l.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
 
     l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 50)];
     l.text = @"Selected:";
@@ -47,9 +48,10 @@
     [self.view addSubview:l];
 
     UIButton *b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    b.frame = CGRectMake(20, 380, 320 - 40, 60);
+    b.frame = CGRectMake(20, 410, 320 - 40, 60);
     [b setTitle:@"Pick a card" forState:UIControlStateNormal];
     [self.view addSubview:b];
+    b.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
 
     [[b rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         if (self.game.receivedCard && self.game.selectedCard) {
@@ -140,5 +142,13 @@
             receivedView.transform = CGAffineTransformMakeRotation((CGFloat) (M_PI_4/ 7.5));
         }];
     }];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // resize to device's native resolution
+    self.view.frame = [[UIScreen mainScreen] bounds];
+
 }
 @end
