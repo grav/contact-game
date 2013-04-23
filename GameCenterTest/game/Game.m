@@ -24,6 +24,7 @@
 }
 
 - (void)endRoundWithOwnCard:(Card *)ownCard andOpponentCard:(Card *)opponentCard {
+    NSLog(@"ending round %i/%i", self.currentRound, self.noOfRounds);
     Result result = [Game compareOwnCard:ownCard
                            withOtherCard:opponentCard
                      consideringProperty:[self getDeteriminingCard].selectedProperty];
@@ -44,10 +45,12 @@
         self.noOfRounds = 5;
         self.currentRound = 1;
         _willSelectProperty = willSelectProperty;
-        //round is ending and we compare the score
+        NSLog(@"setting up endround reactor...");
         [[[RACSignal combineLatest:@[RACAble(self.selectedCard), RACAble(self.receivedCard)]] filter:^BOOL(RACTuple *tuple) {
             //we have two cards and a determining property, then we can end the round
-            return tuple.first && tuple.second && [self getDeteriminingCard].selectedProperty;
+            NSString *determiningProperty = [self getDeteriminingCard].selectedProperty;
+            NSLog(@"determining property %@", determiningProperty);
+            return tuple.first && tuple.second && determiningProperty;
         }] subscribeNext:^(RACTuple *tuple) {
             [self endRoundWithOwnCard:tuple.first andOpponentCard:tuple.second];
         }];
