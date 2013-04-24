@@ -1,7 +1,7 @@
 /*
   Localizable.strings for english version
 */
-"application.title" = "LinkedDown";
+"application.title" = "LinkDown";
 
 "linkedin.login.cancelled.message.header" = "Login Cancelled";
 "linkedin.login.cancelled.message.description" = "Login was cancelled by you";
