@@ -16,7 +16,8 @@
 
 + (LinkedInHttpClient *)clientForApplication:(LinkedInApplication *)application;
 
-- (RACSignal *)getAccessToken:(NSString *)authorizationCode;
+- (RACSignal *)getUser:(NSString *)accessToken;
 
-- (RACSignal *)getAuthorizationCode;
+- (RACSignal *)getAccessToken;
+
 @end

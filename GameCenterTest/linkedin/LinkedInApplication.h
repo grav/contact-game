@@ -13,4 +13,11 @@
 @property(nonatomic, copy) NSString *redirectUrl;
 @property(nonatomic, copy) NSString *clientId;
 @property(nonatomic, copy) NSString *clientSecret;
+
+- (id)initWithRedirectUrl:(NSString *)string andClientId:(NSString *)id andClientSecret:(NSString *)secret;
+
+- (id)initWithRedirectUrl:(NSString *)redirectUrl clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret;
+
++ (id)applicationWithRedirectUrl:(NSString *)redirectUrl clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret;
+
 @end

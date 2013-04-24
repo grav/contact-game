@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LinkedInConstants.h"
 
+@class LinkedInApplication;
+
 typedef void(^LIGAuthorizationCodeSuccessCallback)(NSString *code);
 
 typedef void(^LIGAuthorizationCodeFailureCallback)(NSError *errorReason);
@@ -20,6 +22,6 @@ static NSString *const LINKEDIN_CODE_PREFIX = @"http://www.trifork.com/?code=";
 
 @interface LinkedInAuthenticationViewController : UIViewController
 
-- (id)initWithSuccess:(LIGAuthorizationCodeSuccessCallback)succes andFailure:(LIGAuthorizationCodeFailureCallback)failure;
+- (id)initWithApplication:(LinkedInApplication *)application andSuccess:(LIGAuthorizationCodeSuccessCallback)success andFailure:(LIGAuthorizationCodeFailureCallback)failure;
 
 @end

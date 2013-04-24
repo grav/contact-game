@@ -56,6 +56,13 @@ static NSString *kCellId = @"PeerTableCell";
 }
 
 - (void)loginAndPrepareGame {
+    //todo: finish the implementation using rac - nearly there
+//    [[[LinkedInService singleton] getAccessTokenUsingRac] subscribeNext:^(NSDictionary *accessToken) {
+//        [[[LinkedInService singleton] getUserUsingRac:[accessToken objectForKey:@"access_token"]] subscribeNext:^(id x) {
+//            NSLog(@"result %@", x);
+//        }];
+//    }];
+
     self.loginStateButton.enabled = NO;
     [self.loginStateButton setTitle:@"Loggin in..." forState:UIControlStateNormal];
     [[CardServiceFactory getCardService] getUser:^(LinkedInPerson *user) {

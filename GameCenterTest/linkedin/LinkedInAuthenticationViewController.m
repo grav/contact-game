@@ -9,21 +9,20 @@
 
 #import "LinkedInAuthenticationViewController.h"
 #import "LinkedInCredentials.h"
+#import "LinkedInApplication.h"
 
 @interface LinkedInAuthenticationViewController ()
-
-
+@property(nonatomic, strong) UIWebView *authenticationWebView;
+@property(nonatomic, copy) LIGAuthorizationCodeFailureCallback failureCallback;
+@property(nonatomic, copy) LIGAuthorizationCodeSuccessCallback successCallback;
+@property(nonatomic, strong) id application;
 @end
 
 @interface LinkedInAuthenticationViewController (UIWebViewDelegate) <UIWebViewDelegate>
 
 @end
 
-@implementation LinkedInAuthenticationViewController {
-    LIGAuthorizationCodeSuccessCallback _successCallback;
-    LIGAuthorizationCodeFailureCallback _failureCallback;
-    UIWebView *authenticationWebView;
-}
+@implementation LinkedInAuthenticationViewController
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -34,11 +33,12 @@
     return self;
 }
 
-- (id)initWithSuccess:(LIGAuthorizationCodeSuccessCallback)succes andFailure:(LIGAuthorizationCodeFailureCallback)failure {
+- (id)initWithApplication:(LinkedInApplication *)application andSuccess:(LIGAuthorizationCodeSuccessCallback)success andFailure:(LIGAuthorizationCodeFailureCallback)failure {
     self = [super init];
     if (self) {
-        _successCallback = succes;
-        _failureCallback = failure;
+        self.application = application;
+        self.successCallback = success;
+        self.failureCallback = failure;
     }
 
     return self;
@@ -47,15 +47,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    authenticationWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    authenticationWebView.delegate = self;
-    [self.view addSubview:authenticationWebView];
+    self.authenticationWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.authenticationWebView.delegate = self;
+    [self.view addSubview:self.authenticationWebView];
 
     self.navigationController.navigationBarHidden = YES;
 
 
     NSString *linkedIn = [NSString stringWithFormat:@"https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=%@&scope=r_fullprofile%%20r_network&state=foobar&redirect_uri=http://www.trifork.com", LINKEDIN_CLIENT_ID];
-    [authenticationWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:linkedIn]]];
+    [self.authenticationWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:linkedIn]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,11 +74,11 @@
             BOOL accessDenied = [url rangeOfString:@"the+user+denied+your+request"].location != NSNotFound;
             NSInteger errorCode = accessDenied ? kLinkedInAuthenticationCancelledByUser : kLinkedInAuthenticationFailed;
             NSError *error = [[NSError alloc] initWithDomain:kLinkedInErrorDomain code:errorCode userInfo:[[NSMutableDictionary alloc] init]];
-            _failureCallback(error);
+            self.failureCallback(error);
         } else {
             NSString *prefix = @"http://www.trifork.com/?code=";
             NSString *authorizationCode = [url substringWithRange:NSMakeRange([LINKEDIN_CODE_PREFIX length], [url length] - [LINKEDIN_CODE_PREFIX length] - [LINKEDIN_URL_SUFFIX length])];
-            _successCallback(authorizationCode);
+            self.successCallback(authorizationCode);
         }
         return NO;
     }

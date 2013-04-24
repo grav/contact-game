@@ -9,6 +9,7 @@
 #import "AFNetworking.h"
 #import "LinkedInAuthenticationViewController.h"
 #import "LinkedInCredentials.h"
+#import "LinkedInHttpClient.h"
 
 @implementation LinkedInService {
     LinkedInPerson *user;
@@ -104,32 +105,41 @@ int currentMonth;
         success(linkedInPerson);
     }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
-        LinkedInAuthenticationViewController *authentiationViewController = [[LinkedInAuthenticationViewController alloc]
-                initWithSuccess:^(NSString *code) {
-                    [self getAccessToken:code withSuccess:^(NSString *accessToken) {
-                        [self storeAccessToken:accessToken];
-                        [self getPath:[self getLinkInUserUrl] parameters:nil success:^(AFHTTPRequestOperation *afRequest, NSDictionary *person) {
-                            LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"] monthOfEmployment:0];
-                            [self hideAuthenticateView];
-                            success(linkedInPerson);
-                        }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            [self hideAuthenticateView];
-                            failure(error);
-                        }];
-                    }         andFailure:^(NSError *authenticateError) {
-                        [self hideAuthenticateView];
-                        failure(authenticateError);
-                    }];
-
-                }    andFailure:^(NSError *errorReason) {
+        LinkedInAuthenticationViewController *authentiationViewController = [[LinkedInAuthenticationViewController alloc] initWithApplication:nil andSuccess:^(NSString *code) {
+            [self getAccessToken:code withSuccess:^(NSString *accessToken) {
+                [self storeAccessToken:accessToken];
+                [self getPath:[self getLinkInUserUrl] parameters:nil success:^(AFHTTPRequestOperation *afRequest, NSDictionary *person) {
+                    LinkedInPerson *linkedInPerson = [LinkedInPerson objectWithId:(NSString *) [person objectForKey:@"id"] firstName:[person objectForKey:@"firstName"] lastName:[person objectForKey:@"lastName"] pictureURL:[NSURL URLWithString:[person objectForKey:@"pictureUrl"]] headline:[person objectForKey:@"headline"] connections:[person objectForKey:@"numConnections"] monthOfEmployment:0];
                     [self hideAuthenticateView];
-                    failure(errorReason);
+                    success(linkedInPerson);
+                }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [self hideAuthenticateView];
+                    failure(error);
                 }];
+            }         andFailure:^(NSError *authenticateError) {
+                [self hideAuthenticateView];
+                failure(authenticateError);
+            }];
+
+        }                                                                                                                          andFailure:^(NSError *errorReason) {
+            [self hideAuthenticateView];
+            failure(errorReason);
+        }];
 
         [self showAuthenticateView:authentiationViewController];
     }];
+}
 
+- (RACSignal *)getAccessTokenUsingRac {
+    LinkedInApplication *application = [LinkedInApplication applicationWithRedirectUrl:@"http://www.trifork.com" clientId:LINKEDIN_CLIENT_ID clientSecret:LINKEDIN_CLIENT_SECRET];
+    LinkedInHttpClient *client = [LinkedInHttpClient clientForApplication:application];
+    return [client getAccessToken];
+}
 
+- (RACSignal *)getUserUsingRac:(NSString *) accessToken {
+    LinkedInApplication *application = [LinkedInApplication applicationWithRedirectUrl:@"http://www.trifork.com" clientId:LINKEDIN_CLIENT_ID clientSecret:LINKEDIN_CLIENT_SECRET];
+    LinkedInHttpClient *client = [LinkedInHttpClient clientForApplication:application];
+    return [client getUser:accessToken];
 }
 
 - (NSString *)getLinkInUserUrl {

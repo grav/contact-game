@@ -12,4 +12,19 @@
 @implementation LinkedInApplication
 
 
+- (id)initWithRedirectUrl:(NSString *)redirectUrl clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret {
+    self = [super init];
+    if (self) {
+        self.redirectUrl = redirectUrl;
+        self.clientId = clientId;
+        self.clientSecret = clientSecret;
+    }
+
+    return self;
+}
+
++ (id)applicationWithRedirectUrl:(NSString *)redirectUrl clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret {
+    return [[self alloc] initWithRedirectUrl:redirectUrl clientId:clientId clientSecret:clientSecret];
+}
+
 @end

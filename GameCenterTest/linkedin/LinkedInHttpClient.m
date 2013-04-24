@@ -37,6 +37,16 @@
     return self;
 }
 
+- (RACSignal *)getUser:(NSString *)accessToken {
+    NSString *userUrl = [NSString stringWithFormat:@"/v1/people/~:(id,first-name,last-name,picture-url,headline,positions,num-connections)?oauth2_access_token=%@&format=json", accessToken];
+    return [self enqueueRequestWithMethod:@"GET" path:userUrl parameters:nil];
+}
+
+- (RACSignal *)getAccessToken {
+    return [[self getAuthorizationCode] flattenMap:^(NSString *code) {
+        return [self getAccessToken:code];
+    }];
+}
 
 - (RACSignal *)getAccessToken:(NSString *)authorizationCode {
     NSString *accessTokenUrl = @"/uas/oauth2/accessToken?grant_type=authorization_code&code=%@&redirect_uri=%@&client_id=%@&client_secret=%@";
@@ -47,14 +57,14 @@
 - (RACSignal *)getAuthorizationCode {
     RACReplaySubject *subject = [RACReplaySubject subject];
     LinkedInAuthenticationViewController *authentiationViewController = [[LinkedInAuthenticationViewController alloc]
-            initWithSuccess:^(NSString *code) {
+            initWithApplication:self.application
+            andSuccess:^(NSString *code) {
                 [self hideAuthenticateView];
                 [subject sendNext:code];
                 [subject sendCompleted];
-            }    andFailure:^(NSError *authenticateError) {
+            } andFailure:^(NSError *authenticateError) {
                 [self hideAuthenticateView];
                 [subject sendError:authenticateError];
-
             }];
     [self showAuthenticateView:authentiationViewController];
     return subject;
@@ -76,13 +86,13 @@
 }
 
 - (void)showAuthenticateView:(LinkedInAuthenticationViewController *)authentiationViewController {
-    //todo: handle rootViews not being an navigationController
+    //todo: handle rootViews not being a navigationController
     UIViewController *rootViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
     [rootViewController presentModalViewController:authentiationViewController animated:YES];
 }
 
 - (void)hideAuthenticateView {
-    //todo: handle rootViews not being an navigationController
+    //todo: handle rootViews not being a navigationController
     UIViewController *rootViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
     [rootViewController dismissModalViewControllerAnimated:YES];
 }
