@@ -22,6 +22,8 @@
 		19C997DA40ED9C3189210F14 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 19C99EECBF9ED3C17E056A51 /* .gitignore */; };
 		19C999F8422D71978B542FE6 /* LinkedInAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C990C55DB45DF4F0E16FDB /* LinkedInAuthenticationViewController.m */; };
 		19C99C12327FDFD0D495F0A7 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C995626047BCAA267C1BDC /* AFHTTPRequestOperation.m */; };
+		19C99E6218B9ACDC58725BC5 /* LinkedInApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C99B998F3A013DE965DADA /* LinkedInApplication.m */; };
+		19C99E883895B09C4EB4D2D9 /* LinkedInHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C99EBF8792B259BACF7CAF /* LinkedInHttpClient.m */; };
 		308A6226DD4AEA4B0CA5BF2A /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A62EAE2E8725534566342 /* CardView.m */; };
 		308A642CD56E0F558CB6F1F2 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 308A6DB23408A8A40106A431 /* Card.m */; };
 		308A64580E3DF2990F42A354 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308A620302086157DCE44B66 /* SystemConfiguration.framework */; };
@@ -119,9 +121,11 @@
 		19C9925050604A4357527460 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
 		19C9930D21274148EC99E8AB /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
 		19C99356AC308479195CF4B1 /* LinkedInCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInCredentials.h; sourceTree = "<group>"; };
+		19C9939CC105B9E752D7D05C /* LinkedInApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInApplication.h; sourceTree = "<group>"; };
 		19C993D3C167734E976E1A80 /* CardServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardServiceFactory.m; sourceTree = "<group>"; };
 		19C9943C0E8D9442DE5D01B4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		19C994AF5C57A65581B545DB /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		19C994F3597C57518706ABF6 /* LinkedInHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedInHttpClient.h; sourceTree = "<group>"; };
 		19C99527BD5DDA9058DD150B /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
 		19C9953A2BB2C23A50350D7F /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
 		19C9953F668CED3DEF7197CB /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
@@ -135,9 +139,11 @@
 		19C99A4F685C7B5E90E6A439 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
 		19C99A9D12B9BB229D5579B6 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
 		19C99B02491766CD37C67562 /* CardServiceImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardServiceImpl.m; sourceTree = "<group>"; };
+		19C99B998F3A013DE965DADA /* LinkedInApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedInApplication.m; sourceTree = "<group>"; };
 		19C99E850E0B925283F421A3 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = AFNetworking/AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
 		19C99EA1EB126F4FEB2A9048 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
 		19C99EA5CE40D0C56F3EA056 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		19C99EBF8792B259BACF7CAF /* LinkedInHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedInHttpClient.m; sourceTree = "<group>"; };
 		19C99ED7DEFBE335A3D14ED8 /* CardServiceImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardServiceImpl.h; sourceTree = "<group>"; };
 		19C99EECBF9ED3C17E056A51 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		19C99F0CAE78B3D4366C9D3E /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = AFNetworking/AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
@@ -276,6 +282,10 @@
 				19C99F465832BDCE6E5F5277 /* LinkedInPerson.h */,
 				19C991BCB5B58D55A65B1B5C /* LinkedInPerson.m */,
 				19C995CC4FFC89BF82ACD06F /* LinkedInConstants.h */,
+				19C99EBF8792B259BACF7CAF /* LinkedInHttpClient.m */,
+				19C994F3597C57518706ABF6 /* LinkedInHttpClient.h */,
+				19C99B998F3A013DE965DADA /* LinkedInApplication.m */,
+				19C9939CC105B9E752D7D05C /* LinkedInApplication.h */,
 			);
 			path = linkedin;
 			sourceTree = "<group>";
@@ -675,6 +685,8 @@
 				BBE370A317232B4B0029BCDF /* TSMessage.m in Sources */,
 				BBE370A617232B4B0029BCDF /* UIColor+MLColorAdditions.m in Sources */,
 				BBE370AD17232C260029BCDF /* TSMessageView.m in Sources */,
+				19C99E883895B09C4EB4D2D9 /* LinkedInHttpClient.m in Sources */,
+				19C99E6218B9ACDC58725BC5 /* LinkedInApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

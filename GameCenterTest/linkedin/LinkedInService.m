@@ -56,7 +56,7 @@ int currentMonth;
 }
 
 - (void)getAccessToken:(NSString *)authorizationCode withSuccess:(void (^)(NSString *))success andFailure:(void (^)(NSError *))failure {
-    NSString *authenticateUrl = @"/uas/oauth2/accessToken?grant_type=authorization_code&code=%@&redirect_uri=http://www.trifork.com&client_id=%@&client_secret=%@";;
+    NSString *authenticateUrl = @"/uas/oauth2/accessToken?grant_type=authorization_code&code=%@&redirect_uri=http://www.trifork.com&client_id=%@&client_secret=%@";
     NSString *url = [NSString stringWithFormat:authenticateUrl, authorizationCode, LINKEDIN_CLIENT_ID, LINKEDIN_CLIENT_SECRET];
     NSDictionary *emptyParameters = [[NSDictionary alloc] init];
     [self getPath:url parameters:emptyParameters success:^(AFHTTPRequestOperation *afRequest, NSDictionary *linkedInResult) {
