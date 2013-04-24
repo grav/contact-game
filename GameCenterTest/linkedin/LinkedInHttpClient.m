@@ -7,6 +7,7 @@
 
 
 #import <ReactiveCocoa/RACReplaySubject.h>
+#import <ReactiveCocoa/RACSignal+Operations.h>
 #import "LinkedInHttpClient.h"
 #import "AFJSONRequestOperation.h"
 #import "LinkedInAuthenticationViewController.h"

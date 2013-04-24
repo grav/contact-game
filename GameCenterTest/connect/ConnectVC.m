@@ -61,6 +61,20 @@ static NSString *kCellId = @"PeerTableCell";
 //        [[[LinkedInService singleton] getUserUsingRac:[accessToken objectForKey:@"access_token"]] subscribeNext:^(id x) {
 //            NSLog(@"result %@", x);
 //        }];
+//    } error:^(NSError *error) {
+//        self.loginStateButton.enabled = YES;
+//        self.currentUser = nil;
+//        if ([error.domain isEqualToString:kLinkedInErrorDomain]) {
+//            if (error.code == kLinkedInAuthenticationCancelledByUser) {
+//                [TSMessage showNotificationInViewController:self
+//                                                  withTitle:NSLocalizedString(@"linkedin.login.cancelled.message.header", "Login was cancelled by user message header") withMessage:NSLocalizedString(@"linkedin.login.cancelled.message.description", "Login was cancelled by user message description") withType:TSMessageNotificationTypeWarning];
+//            } else {
+//                [TSMessage showNotificationInViewController:self
+//                                                  withTitle:NSLocalizedString(@"linkedin.login.failed.message.header", "Login failed for unknown reason") withMessage:NSLocalizedString(@"linkedin.login.failed.message.description", "Login failed for unknown reason") withType:TSMessageNotificationTypeError];
+//            }
+//        } else {
+//            NSLog(@"Error %@", [error localizedDescription]);
+//        }
 //    }];
 
     self.loginStateButton.enabled = NO;
